@@ -80,7 +80,7 @@ reserved = {
 
 tokens = tokens + list(reserved.values())
 
-
+# Identificador - Xavier Carlier
 def t_IDENTIFICADOR(token):
     r'[a-zA-Z_$][A-Za-z0-9_$]*'
     token.type = reserved.get(token.value, 'IDENTIFICADOR')
@@ -92,11 +92,11 @@ def t_error(t):
 
 lexer = lex.lex()
 
-
+#Función para probar una entrada - Xavier Carlier
 def receiveLex(s):
     lexer.input(s)
     while True:
         token = lexer.token()
         if not token:
-            break  # No more input
+            break
         print(token)

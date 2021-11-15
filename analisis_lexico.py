@@ -2,7 +2,7 @@ import ply.lex as lex
 
 tokens = ["IDENTIFICADOR"]
 
-#Palabras reservadas suaves y fuertes - Xavier Carlier
+# Palabras reservadas suaves y fuertes - Xavier Carlier
 reserved = {
     'assert': 'ASSERT',
     'default': 'DEFAULT',
@@ -78,7 +78,58 @@ reserved = {
     'Never': 'TIPO_NEVER',
 }
 
+t_VIRGULILLA = r'~'
+t_ACENTO_GRAVE = r'`'
+t_ACENTO_AGUDO = r'´'
+t_COMILLA_SIMPLE = r'\''
+t_COMILLA_DOBLE = r'\"'
+t_SIGNO_ADMIRACION_APERTURA = r'\!'
+t_SIGNO_ADMIRACION_CLAUSURA = r'\¡'
+t_PARENTESIS_APERTURA = r'\('
+t_PARENTESIS_CLAUSURA = r'\)'
+t_SIGNO_INTERROGACION_APERTURA = r'\¿'
+t_SIGNO_INTERROGACION_CLAUSURA = r'\?'
+t_CORCHETE_APERTURA = r'\['
+t_CORCHETE_CLAUSURA = r'\]'
+t_LLAVE_APERTURA = r'\{'
+t_LLAVE_CLAUSURA = r'\}'
+t_SIGNO_MENOR_QUE = r'\<'
+t_SIGNO_MAYOR_QUE = r'\>'
+t_ARROBA = r'@'
+t_PORCENTAJE = r'%'
+t_NUMERAL = r'\#'
+t_ET = r'&'
+t_SIGNO_MAS = r'\+'
+t_SIGNO_MENOS = r'-'
+t_SIGNO_MULTIPLICACION = r'\*'
+t_SIGNO_DIVISION = r'/'
+t_BARRA_INVERTIDA = r'\\'
+t_SIGNO_IGUAL = r'\='
+t_PLECA = r'\|'
+t_PUNTO = r'.'
+t_COMA = r','
+t_DOBLE_PUNTO = r':'
+t_PUNTO_COMA = r';'
+
 tokens = tokens + list(reserved.values())
+tokens += [
+    'VIRGULILLA', 'PLECA',
+    'ACENTO_GRAVE', 'ACENTO_AGUDO',
+    'COMILLA_SIMPLE', 'COMILLA_DOBLE',
+    'SIGNO_ADMIRACION_APERTURA', 'SIGNO_ADMIRACION_CLAUSURA',
+    'PARENTESIS_APERTURA', 'PARENTESIS_CLAUSURA',
+    'SIGNO_INTERROGACION_APERTURA', 'SIGNO_INTERROGACION_CLAUSURA',
+    'CORCHETE_APERTURA', 'CORCHETE_CLAUSURA',
+    'LLAVE_APERTURA', 'LLAVE_CLAUSURA',
+    'SIGNO_MENOR_QUE', 'SIGNO_MAYOR_QUE',
+    'ARROBA', 'PORCENTAJE',
+    'NUMERAL', 'ET',
+    'SIGNO_MAS', 'SIGNO_MENOS',
+    'SIGNO_MULTIPLICACION', 'SIGNO_DIVISION',
+    'BARRA_INVERTIDA', 'SIGNO_IGUAL',
+    'PUNTO', 'DOBLE_PUNTO',
+    'COMA', 'PUNTO_COMA'
+]
 
 # Identificador - Xavier Carlier
 def t_IDENTIFICADOR(token):
@@ -86,9 +137,11 @@ def t_IDENTIFICADOR(token):
     token.type = reserved.get(token.value, 'IDENTIFICADOR')
     return token
 
+
 def t_error(t):
     print("Entrada Ilegal '%s'" % t.value[0])
     t.lexer.skip(1)
+
 
 lexer = lex.lex()
 

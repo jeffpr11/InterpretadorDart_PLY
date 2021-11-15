@@ -78,6 +78,7 @@ reserved = {
     'Never': 'TIPO_NEVER',
 }
 
+# Simbolos y caracteres especiales - Jeffrey Prado
 t_VIRGULILLA = r'~'
 t_ACENTO_GRAVE = r'`'
 t_ACENTO_AGUDO = r'´'
@@ -106,12 +107,27 @@ t_SIGNO_DIVISION = r'/'
 t_BARRA_INVERTIDA = r'\\'
 t_SIGNO_IGUAL = r'\='
 t_PLECA = r'\|'
-t_PUNTO = r'.'
+t_PUNTO = r'\.'
 t_COMA = r','
 t_DOBLE_PUNTO = r':'
 t_PUNTO_COMA = r';'
 
+# Tipos de datos
+t_DATO_VARIABLE = r'[a-z]+'
+
+# Primitivos - Jeffrey Prado
+t_DATO_ENTERO = r'\d+'
+t_DATO_DOBLE = r'\d+\.\d+'
+
+# Estructurales - Jeffrey Prado
+# t_DATO_CADENA_TEXTO = r"[\'|\"]+[a-z]+[\'|\"]"
+# t_DATO_LISTA = r'[[\[]+[\d[\,]]|[\'|\"]+[a-z]+[\'|\"][\,]+[\]]]'
+# t_DATO_CONJUNTO = r'[[\{]+[\d[\,]]|[\'|\"]+[a-z]+[\'|\"][\,]+[\}]]'
+# t_DATO_MAPA = r'[[\{]+[[\d+]|[\'|\"]+[a-z]+[\'|\"]]+\:+\,+[\}]]'
+
 tokens = tokens + list(reserved.values())
+
+# Agregacion de tokens - Jeffrey Prado
 tokens += [
     'VIRGULILLA', 'PLECA',
     'ACENTO_GRAVE', 'ACENTO_AGUDO',
@@ -128,7 +144,9 @@ tokens += [
     'SIGNO_MULTIPLICACION', 'SIGNO_DIVISION',
     'BARRA_INVERTIDA', 'SIGNO_IGUAL',
     'PUNTO', 'DOBLE_PUNTO',
-    'COMA', 'PUNTO_COMA'
+    'COMA', 'PUNTO_COMA',
+    'DATO_VARIABLE', 'DATO_ENTERO',
+    'DATO_DOBLE', 
 ]
 
 # Identificador - Xavier Carlier
@@ -143,9 +161,17 @@ def t_error(t):
     t.lexer.skip(1)
 
 
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
+
+t_ignore = ' '
+
 lexer = lex.lex()
 
-#Función para probar una entrada - Xavier Carlier
+
+# Función para probar una entrada - Xavier Carlier
 def receiveLex(s):
     lexer.input(s)
     while True:

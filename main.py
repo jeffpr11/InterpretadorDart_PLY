@@ -5,9 +5,9 @@ usrInput = ""
 algoritmoPrueba = '''
                     var xval = true;
                     if (xval == true) {
-                        print(0);
+                        print(230);
                     else {
-                        print(1);
+                        print(1.3);
                     }
                 '''
 receiveLex(algoritmoPrueba)

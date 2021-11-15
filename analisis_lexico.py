@@ -1,6 +1,6 @@
 import ply.lex as lex
 
-tokens = ["IDENTIFICADOR"]
+tokens = ["IDENTIFICADOR", "COMENTARIO"]
 
 # Palabras reservadas suaves y fuertes - Xavier Carlier
 reserved = {
@@ -112,9 +112,6 @@ t_COMA = r','
 t_DOBLE_PUNTO = r':'
 t_PUNTO_COMA = r';'
 
-# Tipos de datos
-t_DATO_VARIABLE = r'[a-z]+'
-
 # Primitivos - Jeffrey Prado
 t_DATO_ENTERO = r'\d+'
 t_DATO_DOBLE = r'\d+\.\d+'
@@ -144,17 +141,19 @@ tokens += [
     'SIGNO_MULTIPLICACION', 'SIGNO_DIVISION',
     'BARRA_INVERTIDA', 'SIGNO_IGUAL',
     'PUNTO', 'DOBLE_PUNTO',
-    'COMA', 'PUNTO_COMA',
-    'DATO_VARIABLE', 'DATO_ENTERO',
-    'DATO_DOBLE', 
+    'COMA', 'PUNTO_COMA', 'DATO_ENTERO',
+    'DATO_DOBLE',
 ]
 
-# Identificador - Xavier Carlier
+# Identificador, error, comentario - Xavier Carlier
 def t_IDENTIFICADOR(token):
     r'[a-zA-Z_$][A-Za-z0-9_$]*'
     token.type = reserved.get(token.value, 'IDENTIFICADOR')
     return token
 
+def t_COMENTARIO(t):
+    r'(//[^\n]+)|(/\*(.|\n)*?\*/)|(///[^\n]+)'
+    pass
 
 def t_error(t):
     print("Entrada Ilegal '%s'" % t.value[0])

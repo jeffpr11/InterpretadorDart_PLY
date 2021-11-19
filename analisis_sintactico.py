@@ -16,7 +16,10 @@ def p_asignacion(p):
     '''asignacion : TIPO_INT IDENTIFICADOR SIGNO_IGUAL expresion_mat_int PUNTO_COMA
                 | TIPO_DOUBLE IDENTIFICADOR SIGNO_IGUAL expresion_mat_double PUNTO_COMA
                 | TIPO_BOOL IDENTIFICADOR SIGNO_IGUAL expresion_logica PUNTO_COMA
-                | VAR IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA'''
+                | VAR IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
+                | IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
+                | IDENTIFICADOR SIGNO_MAS SIGNO_IGUAL expresion_mat_double PUNTO_COMA
+                | IDENTIFICADOR SIGNO_MENOS SIGNO_IGUAL expresion_mat_double PUNTO_COMA'''
 
 def p_valor_general(p):
     '''valor_general : IDENTIFICADOR

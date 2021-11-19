@@ -70,7 +70,10 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            'var valor = true&&false||!(true&&!!false);',
            'bool valor = false||(true&&!false);',
            'bool valor = a;',
-           'bool valor = (2==3)&&3<=4||true||!(3>=a);',]
+           'bool valor = (2==3)&&3<=4||true||!(3>=a);',
+           'valor = false||(true&&!false);',
+           'valor += -9+3.09*9;',
+           'valor -= abc;',]
 for prueba in pruebas:
     receiveParse(prueba)
 #while (usrInput != 'exit'):

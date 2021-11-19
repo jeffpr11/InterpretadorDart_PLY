@@ -73,7 +73,8 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            'bool valor = (2==3)&&3<=4||true||!(3>=a);',
            'valor = false||(true&&!false);',
            'valor += -9+3.09*9;',
-           'valor -= abc;',]
+           'valor -= abc;',
+           'valor = null;']
 for prueba in pruebas:
     receiveParse(prueba)
 #while (usrInput != 'exit'):

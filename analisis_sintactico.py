@@ -24,7 +24,8 @@ def p_asignacion(p):
 def p_valor_general(p):
     '''valor_general : IDENTIFICADOR
                     | expresion_mat_double
-                    | expresion_logica'''
+                    | expresion_logica
+                    | NULL'''
 
 def p_expresion_mat_int(p):
     '''expresion_mat_int : expresion_int_no_menos

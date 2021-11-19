@@ -1,11 +1,12 @@
 from analisis_lexico import receiveLex
+from analisis_sintactico import receiveParse
 
 #Entrada por consola - Xavier Carlier
 usrInput = ""
 algoritmoPrueba = '''
                     import 'dart:math';
                     main() {
-                      realizarCalculo(5,3,"suma");
+                      realizarCalculo(-5.2,3,"suma");
                       realizarCalculo(5,3,"multiplicacion");
                       realizarCalculo(5,3,"division");
                       realizarCalculo(5,3,"raiz");
@@ -56,6 +57,26 @@ algoritmoPrueba = '''
                     }
                 '''
 receiveLex(algoritmoPrueba)
-while (usrInput != 'exit'):
-    usrInput = input('Escribe token > ')
-    receiveLex(usrInput)
+
+pruebaInt = '''int valor=-(3*4); 
+            double valor = 5-2.898+4*(1.078/3)%2;'''
+receiveParse(pruebaInt)
+pruebas = ['int valor=-5-2+4*(1~/3)%b;',
+           'int valor=a;',
+           'double valor = 5-2.898+4*(1.078/abc)%2;',
+           'double valor=a;',
+           'var valor = otroValor2;',
+           'var valor = -9+3.09*9;',
+           'var valor = true&&false||!(true&&!!false);',
+           'bool valor = false||(true&&!false);',
+           'bool valor = a;',
+           'bool valor = (2==3)&&3<=4||true||!(3>=a);',]
+for prueba in pruebas:
+    receiveParse(prueba)
+#while (usrInput != 'exit'):
+#    try:
+#        usrInput = input('Ingrese una entrada > ')
+#    except EOFError:
+#        break
+#    if not usrInput: continue
+#    receiveParse(usrInput)

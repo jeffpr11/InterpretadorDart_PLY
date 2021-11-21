@@ -9,15 +9,49 @@ def p_instrucciones(p):
                     | instruccion'''
 
 def p_insruccion(p):
-    '''instruccion : asignacion'''
+    '''instruccion : asignacion
+                    | declaracion
+                    | llamada_func'''
+
+#Reglas de llamadas a funciones - XavierCarlier
+def p_llamada_func(p):
+    '''llamada_func : IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA PUNTO_COMA'''
+
+def p_params(p):
+    '''params : valor_general COMA params
+                | valor_general'''
+
+#Reglas de declaraciones - XavierCarlier
+def p_declaracion(p):
+    '''declaracion : TIPO_INT IDENTIFICADOR PUNTO_COMA
+                | TIPO_DOUBLE IDENTIFICADOR PUNTO_COMA
+                | TIPO_BOOL IDENTIFICADOR PUNTO_COMA
+                | VAR IDENTIFICADOR PUNTO_COMA
+                | DYNAMIC IDENTIFICADOR PUNTO_COMA
+                | TIPO_STRING IDENTIFICADOR PUNTO_COMA
+                | TIPO_LIST IDENTIFICADOR PUNTO_COMA
+                | TIPO_SET IDENTIFICADOR PUNTO_COMA
+                | TIPO_MAP IDENTIFICADOR PUNTO_COMA
+                | TIPO_SYMBOL IDENTIFICADOR PUNTO_COMA
+                | TIPO_OBJECT IDENTIFICADOR PUNTO_COMA
+                | TIPO_FUTURE IDENTIFICADOR PUNTO_COMA
+                | TIPO_STREAM IDENTIFICADOR PUNTO_COMA
+                | TIPO_ITERABLE IDENTIFICADOR PUNTO_COMA
+                | TIPO_NEVER IDENTIFICADOR PUNTO_COMA'''
+
 
 #Reglas de asignacion - Xavier Carlier
 def p_asignacion(p):
     '''asignacion : TIPO_INT IDENTIFICADOR SIGNO_IGUAL expresion_mat_int PUNTO_COMA
                 | TIPO_DOUBLE IDENTIFICADOR SIGNO_IGUAL expresion_mat_double PUNTO_COMA
                 | TIPO_BOOL IDENTIFICADOR SIGNO_IGUAL expresion_logica PUNTO_COMA
+                | TIPO_STRING IDENTIFICADOR SIGNO_IGUAL DATO_CADENA_TEXTO PUNTO_COMA
                 | VAR IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
+                | DYNAMIC IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
                 | IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
+                | VAR IDENTIFICADOR SIGNO_IGUAL llamada_func
+                | DYNAMIC IDENTIFICADOR SIGNO_IGUAL llamada_func
+                | IDENTIFICADOR SIGNO_IGUAL llamada_func
                 | IDENTIFICADOR SIGNO_MAS SIGNO_IGUAL expresion_mat_double PUNTO_COMA
                 | IDENTIFICADOR SIGNO_MENOS SIGNO_IGUAL expresion_mat_double PUNTO_COMA'''
 
@@ -25,8 +59,10 @@ def p_valor_general(p):
     '''valor_general : IDENTIFICADOR
                     | expresion_mat_double
                     | expresion_logica
+                    | DATO_CADENA_TEXTO
                     | NULL'''
 
+#reglas para operaciones matemáticas int y double - XavierCarlier
 def p_expresion_mat_int(p):
     '''expresion_mat_int : expresion_int_no_menos
                     | SIGNO_MENOS expresion_int_no_menos'''
@@ -56,6 +92,7 @@ def p_expresion_double_no_menos(p):
                     | DATO_ENTERO
                     | IDENTIFICADOR'''
 
+#Reglas para operaciones lógicas - XavierCarlier
 def p_expresion_logica(p):
     '''expresion_logica : expresion_logica PLECA PLECA expresion_logica
                         | expresion_logica ET ET expresion_logica

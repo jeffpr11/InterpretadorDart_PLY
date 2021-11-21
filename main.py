@@ -6,7 +6,7 @@ usrInput = ""
 algoritmoPrueba = '''
                     import 'dart:math';
                     main() {
-                      realizarCalculo(-5.2,3,"suma");
+                      realizarCalculo(-5.2,3,"avsdDF2242 .!@#$%^&*()[]{}\¡¿?;:|/=+-_`~");
                       realizarCalculo(5,3,"multiplicacion");
                       realizarCalculo(5,3,"division");
                       realizarCalculo(5,3,"raiz");
@@ -68,14 +68,34 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            'var valor = otroValor2;',
            'var valor = -9+3.09*9;',
            'var valor = true&&false||!(true&&!!false);',
+           'dynamic valor = otroValor2;',
+           'dynamic valor = -9+3.09*9;',
+           'dynamic valor = true&&false||!(true&&!!false);',
            'bool valor = false||(true&&!false);',
            'bool valor = a;',
            'bool valor = (2==3)&&3<=4||true||!(3>=a);',
            'valor = false||(true&&!false);',
            'valor += -9+3.09*9;',
            'valor -= abc;',
-           'valor = null;']
+           'valor = null;',
+           'String valor = \'bromomenOo23_\';',
+           'int valor;',
+           'double valor;',
+           'bool valor;',
+           'var valor;',
+           'dynamic valor;',
+           'List valor;',
+           'Set valor;',
+           'Map valor;',
+           'Symbol valor;',
+           'Object valor;',
+           'Future valor;',
+           'Stream valor;',
+           'Iterable valor;',
+           'Never valor;',
+           'print(\'bro\',2,xR6, true);',]
 for prueba in pruebas:
+    print(prueba)
     receiveParse(prueba)
 #while (usrInput != 'exit'):
 #    try:

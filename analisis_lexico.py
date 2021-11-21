@@ -116,8 +116,9 @@ t_PUNTO_COMA = r';'
 t_DATO_ENTERO = r'\d+'
 t_DATO_DOBLE = r'\d+\.\d+'
 
+t_DATO_CADENA_TEXTO = r"(\'[\w\s\.!¡¿?;:|\\/@#$%^&*()\[\]{}=+-_`~]*\'|\"[\w\s\.!¡¿?;:|\\/@#$%^&*()\[\]{}=+-_`~]*\")"
+
 # Estructurales - Jeffrey Prado
-# t_DATO_CADENA_TEXTO = r"[\'|\"]+[a-z]+[\'|\"]"
 # t_DATO_LISTA = r'[[\[]+[\d[\,]]|[\'|\"]+[a-z]+[\'|\"][\,]+[\]]]'
 # t_DATO_CONJUNTO = r'[[\{]+[\d[\,]]|[\'|\"]+[a-z]+[\'|\"][\,]+[\}]]'
 # t_DATO_MAPA = r'[[\{]+[[\d+]|[\'|\"]+[a-z]+[\'|\"]]+\:+\,+[\}]]'
@@ -142,7 +143,7 @@ tokens += [
     'BARRA_INVERTIDA', 'SIGNO_IGUAL',
     'PUNTO', 'DOBLE_PUNTO',
     'COMA', 'PUNTO_COMA', 'DATO_ENTERO',
-    'DATO_DOBLE',
+    'DATO_DOBLE', 'DATO_CADENA_TEXTO'
 ]
 
 # Identificador, error, comentario - Xavier Carlier

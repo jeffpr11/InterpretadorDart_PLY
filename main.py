@@ -56,7 +56,7 @@ algoritmoPrueba = '''
                       return factorial;
                     }
                 '''
-# receiveLex(algoritmoPrueba)
+receiveLex(algoritmoPrueba)
 
 pruebaInt = '''int valor=-(3*4); 
             double valor = 5-2.898+4*(1.078/3)%2;
@@ -75,7 +75,7 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            'bool valor = false||(true&&!false);',
            'bool valor = a;',
            'bool valor = (2==3)&&3<=4||true||!(3>=a);',
-           'valor = false||(true&&!false);',
+           'valor = false||(a&&!false);',
            'valor += -9+3.09*9;',
            'valor -= abc;',
            'valor = null;',
@@ -94,6 +94,7 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            'Stream valor;',
            'Iterable valor;',
            'Never valor;',
+           'valor valor;',
            'valor = print(\'bro\',2,xR6, true);',
            '''List lista = [1,'2',3];''',
            '''var myList = List(3);''',
@@ -108,6 +109,24 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
             Map mapA23 = {valor:generador1(), "abc": 1,true:false};
             Object valor;
                 }''',
+           '''if(a>b){
+            var x;
+            x = 123;
+            }''',
+           '''if(a<b){
+                var x;
+                x = 123;
+            } else if(true){
+                var x;
+            } else{
+                c = 2+4;
+            }''',
+           '''if(a>b){
+                var x;
+                x = 123;
+            }else{
+                y+=12;
+            }''',
            '''void suma() { mapA23 = 1; }''',
            '''int suma() { mapA23 = 'asd'; }''',
            '''void suma(int numero1, int numero2) { mapA23 = 1; }''',

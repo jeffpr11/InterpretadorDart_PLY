@@ -6,7 +6,8 @@ start = 'programa'
 
 def p_programa(p):
     '''programa : item_programa programa
-                | item_programa'''
+                | item_programa
+                | funcion'''
 
 def p_item_programa(p):
     '''item_programa : instruccion
@@ -14,6 +15,9 @@ def p_item_programa(p):
                     | ABSTRACT clase
                     | funcion
                     | instruccion_if'''
+
+def p_instrucciones(p):
+    '''instrucciones : instruccion'''
 
 def p_instruccion(p):
     '''instruccion : asignacion
@@ -71,23 +75,26 @@ def p_params(p):
     '''params : valor_general COMA params
                 | valor_general'''
 
-#Reglas de declaraciones - XavierCarlier
+#Reglas de declaraciones - XavierCarlier - Jeffrey Prado
+def p_declaracion_general(p):
+    '''declaracion_general : TIPO_INT IDENTIFICADOR
+                | TIPO_DOUBLE IDENTIFICADOR
+                | TIPO_BOOL IDENTIFICADOR
+                | VAR IDENTIFICADOR
+                | DYNAMIC IDENTIFICADOR
+                | TIPO_STRING IDENTIFICADOR
+                | TIPO_LIST IDENTIFICADOR
+                | TIPO_SET IDENTIFICADOR
+                | TIPO_MAP IDENTIFICADOR
+                | TIPO_SYMBOL IDENTIFICADOR
+                | TIPO_OBJECT IDENTIFICADOR
+                | TIPO_FUTURE IDENTIFICADOR
+                | TIPO_STREAM IDENTIFICADOR
+                | TIPO_ITERABLE IDENTIFICADOR
+                | TIPO_NEVER IDENTIFICADOR'''
+
 def p_declaracion(p):
-    '''declaracion : TIPO_INT IDENTIFICADOR PUNTO_COMA
-                | TIPO_DOUBLE IDENTIFICADOR PUNTO_COMA
-                | TIPO_BOOL IDENTIFICADOR PUNTO_COMA
-                | VAR IDENTIFICADOR PUNTO_COMA
-                | DYNAMIC IDENTIFICADOR PUNTO_COMA
-                | TIPO_STRING IDENTIFICADOR PUNTO_COMA
-                | TIPO_LIST IDENTIFICADOR PUNTO_COMA
-                | TIPO_SET IDENTIFICADOR PUNTO_COMA
-                | TIPO_MAP IDENTIFICADOR PUNTO_COMA
-                | TIPO_SYMBOL IDENTIFICADOR PUNTO_COMA
-                | TIPO_OBJECT IDENTIFICADOR PUNTO_COMA
-                | TIPO_FUTURE IDENTIFICADOR PUNTO_COMA
-                | TIPO_STREAM IDENTIFICADOR PUNTO_COMA
-                | TIPO_ITERABLE IDENTIFICADOR PUNTO_COMA
-                | TIPO_NEVER IDENTIFICADOR PUNTO_COMA'''
+    '''declaracion : declaracion_general PUNTO_COMA'''
 
 
 #Reglas de asignacion - Xavier Carlier
@@ -218,10 +225,21 @@ def p_conjunto_especifico(p):
 
 # Regla de Funciones - Jeffrey Prado
 def p_funcion(p):
-    '''funcion : VOID IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA LLAVE_APERTURA instruccion LLAVE_CLAUSURA
-                | IDENTIFICADOR IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA LLAVE_APERTURA instruccion RETURN IDENTIFICADOR LLAVE_CLAUSURA
-                | IDENTIFICADOR IDENTIFICADOR SIGNO_IGUAL PARENTESIS_APERTURA params PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE instruccion
-                | IDENTIFICADOR IDENTIFICADOR SIGNO_IGUAL PARENTESIS_APERTURA params PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE LLAVE_APERTURA instruccion LLAVE_CLAUSURA'''
+    '''funcion : VOID IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
+                | declaracion_general PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
+                | VOID IDENTIFICADOR PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
+                | declaracion_general PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA'''
+
+                # TODO: revisar funcion flecha
+                # declaracion_general SIGNO_IGUAL PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
+                # | declaracion_general SIGNO_IGUAL PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA
+                # | declaracion_general SIGNO_IGUAL PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
+                # | declaracion_general SIGNO_IGUAL PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
+
+def p_parametros(p):
+    '''parametros : declaracion_general
+                    | declaracion_general COMA parametros'''
+
 
 def p_error(p):
     print('Syntax Error')

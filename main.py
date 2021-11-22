@@ -59,7 +59,8 @@ algoritmoPrueba = '''
 receiveLex(algoritmoPrueba)
 
 pruebaInt = '''int valor=-(3*4); 
-            double valor = 5-2.898+4*(1.078/3)%2;'''
+            double valor = 5-2.898+4*(1.078/3)%2;
+            '''
 receiveParse(pruebaInt)
 pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            'int valor=a;',
@@ -103,7 +104,6 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
             Map mapA23 = {valor:generador1(), "abc": 1,true:false};
             Object valor;
                 }''',
-           'int funcion(1,"d"){var x;return x}',
            '''if(a>b){
             var x;
             x = 123;
@@ -122,7 +122,10 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
             }else{
                 y+=12;
             }''',
-           ]
+           '''void suma() { mapA23 = 1; }''',
+           '''int suma() { mapA23 = 'asd'; }''',
+           '''void suma(int numero1, int numero2) { mapA23 = 1; }''',
+           '''int suma(int numero1, int numero2) { mapA23 = numero1 + numero2; }''',]
 for prueba in pruebas:
     print(prueba)
     receiveParse(prueba)

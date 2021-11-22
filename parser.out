@@ -186,6 +186,8 @@ Rule 118   conjunto_especifico -> SIGNO_MENOR_QUE TIPO_DOUBLE SIGNO_MAYOR_QUE li
 Rule 119   conjunto_especifico -> SIGNO_MENOR_QUE TIPO_STRING SIGNO_MAYOR_QUE lista_cadenas LLAVE_CLAUSURA
 Rule 120   funcion -> VOID IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA LLAVE_APERTURA instruccion LLAVE_CLAUSURA
 Rule 121   funcion -> IDENTIFICADOR IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA LLAVE_APERTURA instruccion RETURN IDENTIFICADOR LLAVE_CLAUSURA
+Rule 122   funcion -> IDENTIFICADOR IDENTIFICADOR SIGNO_IGUAL PARENTESIS_APERTURA params PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE instruccion
+Rule 123   funcion -> IDENTIFICADOR IDENTIFICADOR SIGNO_IGUAL PARENTESIS_APERTURA params PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE LLAVE_APERTURA instruccion LLAVE_CLAUSURA
 
 Terminals, with rules where they appear
 
@@ -233,23 +235,23 @@ FOR                  :
 FUNCTION             : 
 GET                  : 
 HIDE                 : 
-IDENTIFICADOR        : 9 13 14 16 18 19 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 48 49 50 51 58 65 75 86 94 120 121 121 121
+IDENTIFICADOR        : 9 13 14 16 18 19 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 48 49 50 51 58 65 75 86 94 120 121 121 121 122 122 123 123
 IF                   : 
 IMPLEMENTS           : 
 IMPORT               : 
 INTERFACE            : 
 IS                   : 
 LIBRARY              : 
-LLAVE_APERTURA       : 9 52 53 114 115 116 120 121
-LLAVE_CLAUSURA       : 9 52 53 114 115 116 117 118 119 120 121
+LLAVE_APERTURA       : 9 52 53 114 115 116 120 121 123
+LLAVE_CLAUSURA       : 9 52 53 114 115 116 117 118 119 120 121 123
 MIXIN                : 
 NEW                  : 13 54 104 105
 NULL                 : 64
 NUMERAL              : 
 ON                   : 
 OPERATOR             : 
-PARENTESIS_APERTURA  : 13 18 19 54 73 83 89 120 121
-PARENTESIS_CLAUSURA  : 13 18 19 54 73 83 89 120 121
+PARENTESIS_APERTURA  : 13 18 19 54 73 83 89 120 121 122 123
+PARENTESIS_CLAUSURA  : 13 18 19 54 73 83 89 120 121 122 123
 PART                 : 
 PLECA                : 87 87
 PORCENTAJE           : 71 81
@@ -262,11 +264,11 @@ SHOW                 :
 SIGNO_ADMIRACION_APERTURA : 90 100
 SIGNO_ADMIRACION_CLAUSURA : 
 SIGNO_DIVISION       : 72 82
-SIGNO_IGUAL          : 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 97 98 99 99 100
+SIGNO_IGUAL          : 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 97 98 99 99 100 122 122 123 123
 SIGNO_INTERROGACION_APERTURA : 
 SIGNO_INTERROGACION_CLAUSURA : 
 SIGNO_MAS            : 44 68 78
-SIGNO_MAYOR_QUE      : 49 51 96 98 117 118 119
+SIGNO_MAYOR_QUE      : 49 51 96 98 117 118 119 122 123
 SIGNO_MENOR_QUE      : 49 51 95 97 117 118 119
 SIGNO_MENOS          : 45 67 69 77 79
 SIGNO_MULTIPLICACION : 70 80
@@ -316,7 +318,7 @@ expresion_logica     : 39 60 87 87 88 88 89 90
 expresion_mat_double : 38 44 45 59 95 95 96 96 97 97 98 98 99 99 100 100
 expresion_mat_int    : 37
 funcion              : 
-instruccion          : 3 12 120 121
+instruccion          : 3 12 120 121 122 123
 item_bloque_clase    : 10 11
 item_programa        : 1 2
 lista                : 48 49
@@ -328,7 +330,7 @@ llamada_func         : 15 17
 llamadas_func        : 14 15 62
 nuevo_objeto         : 63
 par_llave_valor      : 55 56
-params               : 18 20 120 121
+params               : 18 20 120 121 122 123
 pares_llave_valor    : 52 55
 programa             : 1 0
 valor_general        : 20 21 41 42 43 47 57 57 65 106 107

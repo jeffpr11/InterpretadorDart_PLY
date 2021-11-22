@@ -118,11 +118,6 @@ t_DATO_DOBLE = r'\d+\.\d+'
 
 t_DATO_CADENA_TEXTO = r"(\'[\w\s\.!¡¿?;:|\\/@#$%^&*()\[\]{}=+-_`~]*\'|\"[\w\s\.!¡¿?;:|\\/@#$%^&*()\[\]{}=+-_`~]*\")"
 
-# Estructurales - Jeffrey Prado
-# t_DATO_LISTA = r'[[\[]+[\d[\,]]|[\'|\"]+[a-z]+[\'|\"][\,]+[\]]]'
-# t_DATO_CONJUNTO = r'[[\{]+[\d[\,]]|[\'|\"]+[a-z]+[\'|\"][\,]+[\}]]'
-# t_DATO_MAPA = r'[[\{]+[[\d+]|[\'|\"]+[a-z]+[\'|\"]]+\:+\,+[\}]]'
-
 tokens = tokens + list(reserved.values())
 
 # Agregacion de tokens - Jeffrey Prado

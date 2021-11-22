@@ -56,7 +56,7 @@ algoritmoPrueba = '''
                       return factorial;
                     }
                 '''
-receiveLex(algoritmoPrueba)
+# receiveLex(algoritmoPrueba)
 
 pruebaInt = '''int valor=-(3*4); 
             double valor = 5-2.898+4*(1.078/3)%2;'''

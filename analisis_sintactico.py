@@ -12,7 +12,7 @@ def p_item_programa(p):
                     | clase
                     | ABSTRACT clase'''
 
-def p_insruccion(p):
+def p_instruccion(p):
     '''instruccion : asignacion
                     | FINAL asignacion
                     | declaracion'''
@@ -79,7 +79,11 @@ def p_asignacion(p):
                 | IDENTIFICADOR SIGNO_MAS SIGNO_IGUAL expresion_mat_double PUNTO_COMA
                 | IDENTIFICADOR SIGNO_MENOS SIGNO_IGUAL expresion_mat_double PUNTO_COMA
                 | TIPO_MAP IDENTIFICADOR SIGNO_IGUAL bloque_mapa PUNTO_COMA
-                | valor_mapa_lista SIGNO_IGUAL valor_general PUNTO_COMA'''
+                | valor_mapa_lista SIGNO_IGUAL valor_general PUNTO_COMA
+                | TIPO_LIST IDENTIFICADOR SIGNO_IGUAL lista PUNTO_COMA
+                | TIPO_LIST SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE SIGNO_IGUAL lista PUNTO_COMA
+                | VAR IDENTIFICADOR SIGNO_IGUAL conjunto_especifico PUNTO_COMA
+                | TIPO_SET SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE SIGNO_IGUAL conjunto PUNTO_COMA'''
 
 #Reglas de mapa - XavierCarlier
 def p_bloque_mapa(p):
@@ -154,6 +158,46 @@ def p_comparacion(p):
                 | expresion_mat_double SIGNO_MAYOR_QUE SIGNO_IGUAL expresion_mat_double
                 | expresion_mat_double SIGNO_IGUAL SIGNO_IGUAL expresion_mat_double
                 | expresion_mat_double SIGNO_ADMIRACION_APERTURA SIGNO_IGUAL expresion_mat_double'''
+
+# Reglas de Lista - Jeffrey Prado
+def p_lista(p):
+    '''lista : CORCHETE_APERTURA lista_general CORCHETE_CLAUSURA
+                | CORCHETE_APERTURA CORCHETE_CLAUSURA
+                | CORCHETE_APERTURA DATO_ENTERO CORCHETE_CLAUSURA
+                | NEW TIPO_LIST CORCHETE_APERTURA CORCHETE_CLAUSURA
+                | NEW TIPO_LIST CORCHETE_APERTURA DATO_ENTERO CORCHETE_CLAUSURA'''
+
+def p_lista_general(p):
+    '''lista_general : valor_general 
+                        | valor_general COMA lista_general'''
+
+def p_lista_numeros(p):
+    '''lista_numeros : DATO_ENTERO 
+                        | DATO_ENTERO COMA lista_numeros'''
+
+def p_lista_dobles(p):
+    '''lista_dobles : DATO_DOBLE 
+                        | DATO_DOBLE COMA lista_dobles'''
+
+def p_lista_cadenas(p):
+    '''lista_cadenas : DATO_CADENA_TEXTO 
+                        | DATO_CADENA_TEXTO COMA lista_cadenas'''
+
+# Reglas de Conjunto - Jeffrey Prado
+def p_conjunto(p):
+    '''conjunto : LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA
+                    | LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA
+                    | LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA'''
+
+def p_conjunto_especifico(p):
+    '''conjunto_especifico : SIGNO_MENOR_QUE TIPO_INT SIGNO_MAYOR_QUE lista_numeros LLAVE_CLAUSURA
+                            | SIGNO_MENOR_QUE TIPO_DOUBLE SIGNO_MAYOR_QUE lista_dobles LLAVE_CLAUSURA
+                            | SIGNO_MENOR_QUE TIPO_STRING SIGNO_MAYOR_QUE lista_cadenas LLAVE_CLAUSURA'''
+
+# Regla de Funciones - Jeffrey Prado
+def p_funcion(p):
+    '''funcion : VOID IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA LLAVE_APERTURA instruccion LLAVE_CLAUSURA
+                | IDENTIFICADOR IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA LLAVE_APERTURA instruccion RETURN IDENTIFICADOR LLAVE_CLAUSURA'''
 
 def p_error(p):
     print('Syntax Error')

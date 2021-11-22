@@ -36,7 +36,7 @@ def p_items_estructura_control(p):
 
 def p_item_estructura_control(p):
     '''item_estructura_control : instruccion
-                                | llamadas_func'''
+                                | llamadas_func PUNTO_COMA'''
 
 #Reglas de clases - XavierCarlier
 #todo:constructores
@@ -248,7 +248,7 @@ def p_items_funcion(p):
 def p_item_funcion(p):
     '''item_funcion : instruccion
                     | instruccion_if
-                    | llamadas_func'''
+                    | llamadas_func PUNTO_COMA'''
 
 
 def p_error(p):

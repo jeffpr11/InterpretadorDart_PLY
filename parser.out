@@ -82,7 +82,7 @@ Rule 15    instruccion_else -> ELSE LLAVE_APERTURA items_estructura_control LLAV
 Rule 16    items_estructura_control -> item_estructura_control items_estructura_control
 Rule 17    items_estructura_control -> item_estructura_control
 Rule 18    item_estructura_control -> instruccion
-Rule 19    item_estructura_control -> llamadas_func
+Rule 19    item_estructura_control -> llamadas_func PUNTO_COMA
 Rule 20    clase -> CLASS IDENTIFICADOR LLAVE_APERTURA bloque_clase LLAVE_CLAUSURA
 Rule 21    bloque_clase -> item_bloque_clase bloque_clase
 Rule 22    bloque_clase -> item_bloque_clase
@@ -211,7 +211,7 @@ Rule 144   items_funcion -> item_funcion items_funcion
 Rule 145   items_funcion -> item_funcion
 Rule 146   item_funcion -> instruccion
 Rule 147   item_funcion -> instruccion_if
-Rule 148   item_funcion -> llamadas_func
+Rule 148   item_funcion -> llamadas_func PUNTO_COMA
 
 Terminals, with rules where they appear
 
@@ -280,7 +280,7 @@ PART                 :
 PLECA                : 101 101
 PORCENTAJE           : 85 95
 PUNTO                : 26 27
-PUNTO_COMA           : 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66
+PUNTO_COMA           : 19 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 148
 RETHROW              : 
 RETURN               : 
 SET                  : 
@@ -2119,30 +2119,8 @@ state 99
     CORCHETE_CLAUSURA reduce using rule 28 (llamadas_func -> llamada_func .)
     COMA            reduce using rule 28 (llamadas_func -> llamada_func .)
     PARENTESIS_CLAUSURA reduce using rule 28 (llamadas_func -> llamada_func .)
-    FINAL           reduce using rule 28 (llamadas_func -> llamada_func .)
-    IF              reduce using rule 28 (llamadas_func -> llamada_func .)
-    IDENTIFICADOR   reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_INT        reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_DOUBLE     reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_BOOL       reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_STRING     reduce using rule 28 (llamadas_func -> llamada_func .)
-    VAR             reduce using rule 28 (llamadas_func -> llamada_func .)
-    DYNAMIC         reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_MAP        reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_LIST       reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_SET        reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_SYMBOL     reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_OBJECT     reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_FUTURE     reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_STREAM     reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_ITERABLE   reduce using rule 28 (llamadas_func -> llamada_func .)
-    TIPO_NEVER      reduce using rule 28 (llamadas_func -> llamada_func .)
-    LLAVE_CLAUSURA  reduce using rule 28 (llamadas_func -> llamada_func .)
     DOBLE_PUNTO     reduce using rule 28 (llamadas_func -> llamada_func .)
-    ABSTRACT        reduce using rule 28 (llamadas_func -> llamada_func .)
-    CLASS           reduce using rule 28 (llamadas_func -> llamada_func .)
-    VOID            reduce using rule 28 (llamadas_func -> llamada_func .)
-    $end            reduce using rule 28 (llamadas_func -> llamada_func .)
+    LLAVE_CLAUSURA  reduce using rule 28 (llamadas_func -> llamada_func .)
 
 
 state 100
@@ -3453,7 +3431,7 @@ state 171
     (145) items_funcion -> . item_funcion
     (146) item_funcion -> . instruccion
     (147) item_funcion -> . instruccion_if
-    (148) item_funcion -> . llamadas_func
+    (148) item_funcion -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -4094,30 +4072,8 @@ state 218
     CORCHETE_CLAUSURA reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
     COMA            reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
     PARENTESIS_CLAUSURA reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    FINAL           reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    IF              reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    IDENTIFICADOR   reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_INT        reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_DOUBLE     reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_BOOL       reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_STRING     reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    VAR             reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    DYNAMIC         reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_MAP        reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_LIST       reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_SET        reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_SYMBOL     reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_OBJECT     reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_FUTURE     reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_STREAM     reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_ITERABLE   reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    TIPO_NEVER      reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    LLAVE_CLAUSURA  reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
     DOBLE_PUNTO     reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    ABSTRACT        reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    CLASS           reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    VOID            reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
-    $end            reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
+    LLAVE_CLAUSURA  reduce using rule 26 (llamadas_func -> IDENTIFICADOR PUNTO llamadas_func .)
 
 
 state 219
@@ -4136,30 +4092,8 @@ state 220
     CORCHETE_CLAUSURA reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
     COMA            reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
     PARENTESIS_CLAUSURA reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    FINAL           reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    IF              reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    IDENTIFICADOR   reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_INT        reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_DOUBLE     reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_BOOL       reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_STRING     reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    VAR             reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    DYNAMIC         reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_MAP        reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_LIST       reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_SET        reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_SYMBOL     reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_OBJECT     reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_FUTURE     reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_STREAM     reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_ITERABLE   reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    TIPO_NEVER      reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    LLAVE_CLAUSURA  reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
     DOBLE_PUNTO     reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    ABSTRACT        reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    CLASS           reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    VOID            reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
-    $end            reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
+    LLAVE_CLAUSURA  reduce using rule 30 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
 
 
 state 221
@@ -4638,30 +4572,8 @@ state 238
     CORCHETE_CLAUSURA reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
     COMA            reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
     PARENTESIS_CLAUSURA reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    FINAL           reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    IF              reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    IDENTIFICADOR   reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_INT        reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_DOUBLE     reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_BOOL       reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_STRING     reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    VAR             reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    DYNAMIC         reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_MAP        reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_LIST       reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_SET        reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_SYMBOL     reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_OBJECT     reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_FUTURE     reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_STREAM     reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_ITERABLE   reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    TIPO_NEVER      reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    LLAVE_CLAUSURA  reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
     DOBLE_PUNTO     reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    ABSTRACT        reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    CLASS           reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    VOID            reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
-    $end            reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
+    LLAVE_CLAUSURA  reduce using rule 27 (llamadas_func -> llamada_func PUNTO llamadas_func .)
 
 
 state 239
@@ -4736,7 +4648,7 @@ state 242
     (145) items_funcion -> . item_funcion
     (146) item_funcion -> . instruccion
     (147) item_funcion -> . instruccion_if
-    (148) item_funcion -> . llamadas_func
+    (148) item_funcion -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -4851,7 +4763,7 @@ state 247
     (145) items_funcion -> . item_funcion
     (146) item_funcion -> . instruccion
     (147) item_funcion -> . instruccion_if
-    (148) item_funcion -> . llamadas_func
+    (148) item_funcion -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -5030,31 +4942,9 @@ state 249
 
 state 250
 
-    (148) item_funcion -> llamadas_func .
+    (148) item_funcion -> llamadas_func . PUNTO_COMA
 
-    FINAL           reduce using rule 148 (item_funcion -> llamadas_func .)
-    IF              reduce using rule 148 (item_funcion -> llamadas_func .)
-    IDENTIFICADOR   reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_INT        reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_DOUBLE     reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_BOOL       reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_STRING     reduce using rule 148 (item_funcion -> llamadas_func .)
-    VAR             reduce using rule 148 (item_funcion -> llamadas_func .)
-    DYNAMIC         reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_MAP        reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_LIST       reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_SET        reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_SYMBOL     reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_OBJECT     reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_FUTURE     reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_STREAM     reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_ITERABLE   reduce using rule 148 (item_funcion -> llamadas_func .)
-    TIPO_NEVER      reduce using rule 148 (item_funcion -> llamadas_func .)
-    LLAVE_CLAUSURA  reduce using rule 148 (item_funcion -> llamadas_func .)
-    ABSTRACT        reduce using rule 148 (item_funcion -> llamadas_func .)
-    CLASS           reduce using rule 148 (item_funcion -> llamadas_func .)
-    VOID            reduce using rule 148 (item_funcion -> llamadas_func .)
-    $end            reduce using rule 148 (item_funcion -> llamadas_func .)
+    PUNTO_COMA      shift and go to state 303
 
 
 state 251
@@ -5082,7 +4972,7 @@ state 252
     (145) items_funcion -> . item_funcion
     (146) item_funcion -> . instruccion
     (147) item_funcion -> . instruccion_if
-    (148) item_funcion -> . llamadas_func
+    (148) item_funcion -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -5148,7 +5038,7 @@ state 252
     TIPO_ITERABLE   shift and go to state 30
     TIPO_NEVER      shift and go to state 31
 
-    items_funcion                  shift and go to state 303
+    items_funcion                  shift and go to state 304
     item_funcion                   shift and go to state 247
     instruccion                    shift and go to state 248
     instruccion_if                 shift and go to state 249
@@ -5166,7 +5056,7 @@ state 253
     (145) items_funcion -> . item_funcion
     (146) item_funcion -> . instruccion
     (147) item_funcion -> . instruccion_if
-    (148) item_funcion -> . llamadas_func
+    (148) item_funcion -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -5233,7 +5123,7 @@ state 253
     TIPO_NEVER      shift and go to state 31
 
     declaracion_general            shift and go to state 245
-    items_funcion                  shift and go to state 304
+    items_funcion                  shift and go to state 305
     item_funcion                   shift and go to state 247
     instruccion                    shift and go to state 248
     instruccion_if                 shift and go to state 249
@@ -5247,7 +5137,7 @@ state 254
 
     (141) funcion_flecha -> PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL . SIGNO_MAYOR_QUE items_funcion
 
-    SIGNO_MAYOR_QUE shift and go to state 305
+    SIGNO_MAYOR_QUE shift and go to state 306
 
 
 state 255
@@ -5257,7 +5147,7 @@ state 255
     (16) items_estructura_control -> . item_estructura_control items_estructura_control
     (17) items_estructura_control -> . item_estructura_control
     (18) item_estructura_control -> . instruccion
-    (19) item_estructura_control -> . llamadas_func
+    (19) item_estructura_control -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -5320,10 +5210,10 @@ state 255
     TIPO_ITERABLE   shift and go to state 30
     TIPO_NEVER      shift and go to state 31
 
-    items_estructura_control       shift and go to state 306
-    item_estructura_control        shift and go to state 307
-    instruccion                    shift and go to state 308
-    llamadas_func                  shift and go to state 309
+    items_estructura_control       shift and go to state 307
+    item_estructura_control        shift and go to state 308
+    instruccion                    shift and go to state 309
+    llamadas_func                  shift and go to state 310
     asignacion                     shift and go to state 8
     declaracion                    shift and go to state 10
     llamada_func                   shift and go to state 99
@@ -5375,7 +5265,7 @@ state 257
     DATO_ENTERO     shift and go to state 188
     IDENTIFICADOR   shift and go to state 183
 
-    expresion_int_no_menos         shift and go to state 310
+    expresion_int_no_menos         shift and go to state 311
 
 state 258
 
@@ -5393,7 +5283,7 @@ state 258
     DATO_ENTERO     shift and go to state 188
     IDENTIFICADOR   shift and go to state 183
 
-    expresion_int_no_menos         shift and go to state 311
+    expresion_int_no_menos         shift and go to state 312
 
 state 259
 
@@ -5411,7 +5301,7 @@ state 259
     DATO_ENTERO     shift and go to state 188
     IDENTIFICADOR   shift and go to state 183
 
-    expresion_int_no_menos         shift and go to state 312
+    expresion_int_no_menos         shift and go to state 313
 
 state 260
 
@@ -5429,13 +5319,13 @@ state 260
     DATO_ENTERO     shift and go to state 188
     IDENTIFICADOR   shift and go to state 183
 
-    expresion_int_no_menos         shift and go to state 313
+    expresion_int_no_menos         shift and go to state 314
 
 state 261
 
     (86) expresion_int_no_menos -> expresion_int_no_menos VIRGULILLA . SIGNO_DIVISION expresion_int_no_menos
 
-    SIGNO_DIVISION  shift and go to state 314
+    SIGNO_DIVISION  shift and go to state 315
 
 
 state 262
@@ -5464,7 +5354,7 @@ state 263
     (85) expresion_int_no_menos -> expresion_int_no_menos . PORCENTAJE expresion_int_no_menos
     (86) expresion_int_no_menos -> expresion_int_no_menos . VIRGULILLA SIGNO_DIVISION expresion_int_no_menos
 
-    PARENTESIS_CLAUSURA shift and go to state 315
+    PARENTESIS_CLAUSURA shift and go to state 316
     SIGNO_MAS       shift and go to state 257
     SIGNO_MENOS     shift and go to state 258
     SIGNO_MULTIPLICACION shift and go to state 259
@@ -5650,7 +5540,7 @@ state 270
 
     (115) lista -> CORCHETE_APERTURA lista_general . CORCHETE_CLAUSURA
 
-    CORCHETE_CLAUSURA shift and go to state 316
+    CORCHETE_CLAUSURA shift and go to state 317
 
 
 state 271
@@ -5666,14 +5556,14 @@ state 272
     (121) lista_general -> valor_general . COMA lista_general
 
     CORCHETE_CLAUSURA reduce using rule 120 (lista_general -> valor_general .)
-    COMA            shift and go to state 317
+    COMA            shift and go to state 318
 
 
 state 273
 
     (117) lista -> TIPO_LIST PARENTESIS_APERTURA . DATO_ENTERO PARENTESIS_CLAUSURA
 
-    DATO_ENTERO     shift and go to state 318
+    DATO_ENTERO     shift and go to state 319
 
 
 state 274
@@ -5681,7 +5571,7 @@ state 274
     (118) lista -> NEW TIPO_LIST . CORCHETE_APERTURA CORCHETE_CLAUSURA
     (119) lista -> NEW TIPO_LIST . CORCHETE_APERTURA DATO_ENTERO CORCHETE_CLAUSURA
 
-    CORCHETE_APERTURA shift and go to state 319
+    CORCHETE_APERTURA shift and go to state 320
 
 
 state 275
@@ -5690,9 +5580,9 @@ state 275
     (122) lista_numeros -> . DATO_ENTERO
     (123) lista_numeros -> . DATO_ENTERO COMA lista_numeros
 
-    DATO_ENTERO     shift and go to state 321
+    DATO_ENTERO     shift and go to state 322
 
-    lista_numeros                  shift and go to state 320
+    lista_numeros                  shift and go to state 321
 
 state 276
 
@@ -5700,9 +5590,9 @@ state 276
     (124) lista_dobles -> . DATO_DOBLE
     (125) lista_dobles -> . DATO_DOBLE COMA lista_dobles
 
-    DATO_DOBLE      shift and go to state 323
+    DATO_DOBLE      shift and go to state 324
 
-    lista_dobles                   shift and go to state 322
+    lista_dobles                   shift and go to state 323
 
 state 277
 
@@ -5710,9 +5600,9 @@ state 277
     (126) lista_cadenas -> . DATO_CADENA_TEXTO
     (127) lista_cadenas -> . DATO_CADENA_TEXTO COMA lista_cadenas
 
-    DATO_CADENA_TEXTO shift and go to state 325
+    DATO_CADENA_TEXTO shift and go to state 326
 
-    lista_cadenas                  shift and go to state 324
+    lista_cadenas                  shift and go to state 325
 
 state 278
 
@@ -5776,7 +5666,7 @@ state 280
 
     (67) bloque_mapa -> LLAVE_APERTURA pares_llave_valor . LLAVE_CLAUSURA
 
-    LLAVE_CLAUSURA  shift and go to state 326
+    LLAVE_CLAUSURA  shift and go to state 327
 
 
 state 281
@@ -5791,7 +5681,7 @@ state 282
     (70) pares_llave_valor -> par_llave_valor . COMA pares_llave_valor
     (71) pares_llave_valor -> par_llave_valor .
 
-    COMA            shift and go to state 327
+    COMA            shift and go to state 328
     LLAVE_CLAUSURA  reduce using rule 71 (pares_llave_valor -> par_llave_valor .)
 
 
@@ -5799,14 +5689,14 @@ state 283
 
     (72) par_llave_valor -> valor_general . DOBLE_PUNTO valor_general
 
-    DOBLE_PUNTO     shift and go to state 328
+    DOBLE_PUNTO     shift and go to state 329
 
 
 state 284
 
     (69) bloque_mapa -> NEW TIPO_MAP . PARENTESIS_APERTURA PARENTESIS_CLAUSURA
 
-    PARENTESIS_APERTURA shift and go to state 329
+    PARENTESIS_APERTURA shift and go to state 330
 
 
 state 285
@@ -5842,7 +5732,7 @@ state 286
 
     (61) asignacion -> TIPO_LIST SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE IDENTIFICADOR . SIGNO_IGUAL lista PUNTO_COMA
 
-    SIGNO_IGUAL     shift and go to state 330
+    SIGNO_IGUAL     shift and go to state 331
 
 
 state 287
@@ -5851,9 +5741,9 @@ state 287
     (122) lista_numeros -> . DATO_ENTERO
     (123) lista_numeros -> . DATO_ENTERO COMA lista_numeros
 
-    DATO_ENTERO     shift and go to state 321
+    DATO_ENTERO     shift and go to state 322
 
-    lista_numeros                  shift and go to state 331
+    lista_numeros                  shift and go to state 332
 
 state 288
 
@@ -5861,9 +5751,9 @@ state 288
     (124) lista_dobles -> . DATO_DOBLE
     (125) lista_dobles -> . DATO_DOBLE COMA lista_dobles
 
-    DATO_DOBLE      shift and go to state 323
+    DATO_DOBLE      shift and go to state 324
 
-    lista_dobles                   shift and go to state 332
+    lista_dobles                   shift and go to state 333
 
 state 289
 
@@ -5871,9 +5761,9 @@ state 289
     (126) lista_cadenas -> . DATO_CADENA_TEXTO
     (127) lista_cadenas -> . DATO_CADENA_TEXTO COMA lista_cadenas
 
-    DATO_CADENA_TEXTO shift and go to state 325
+    DATO_CADENA_TEXTO shift and go to state 326
 
-    lista_cadenas                  shift and go to state 333
+    lista_cadenas                  shift and go to state 334
 
 state 290
 
@@ -5884,30 +5774,8 @@ state 290
     CORCHETE_CLAUSURA reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
     COMA            reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
     PARENTESIS_CLAUSURA reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    FINAL           reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    IF              reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    IDENTIFICADOR   reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_INT        reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_DOUBLE     reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_BOOL       reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_STRING     reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    VAR             reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    DYNAMIC         reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_MAP        reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_LIST       reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_SET        reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_SYMBOL     reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_OBJECT     reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_FUTURE     reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_STREAM     reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_ITERABLE   reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    TIPO_NEVER      reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    LLAVE_CLAUSURA  reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
     DOBLE_PUNTO     reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    ABSTRACT        reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    CLASS           reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    VOID            reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
-    $end            reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
+    LLAVE_CLAUSURA  reduce using rule 29 (llamada_func -> IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA .)
 
 
 state 291
@@ -5966,7 +5834,7 @@ state 291
     DATO_ENTERO     shift and go to state 102
 
     valor_general                  shift and go to state 221
-    params                         shift and go to state 334
+    params                         shift and go to state 335
     expresion_mat_double           shift and go to state 86
     expresion_logica               shift and go to state 87
     llamadas_func                  shift and go to state 89
@@ -6089,7 +5957,7 @@ state 299
 
     (134) funcion -> VOID IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion . LLAVE_CLAUSURA
 
-    LLAVE_CLAUSURA  shift and go to state 335
+    LLAVE_CLAUSURA  shift and go to state 336
 
 
 state 300
@@ -6099,7 +5967,7 @@ state 300
     (145) items_funcion -> . item_funcion
     (146) item_funcion -> . instruccion
     (147) item_funcion -> . instruccion_if
-    (148) item_funcion -> . llamadas_func
+    (148) item_funcion -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -6165,7 +6033,7 @@ state 300
     TIPO_ITERABLE   shift and go to state 30
     TIPO_NEVER      shift and go to state 31
 
-    items_funcion                  shift and go to state 336
+    items_funcion                  shift and go to state 337
     item_funcion                   shift and go to state 247
     instruccion                    shift and go to state 248
     instruccion_if                 shift and go to state 249
@@ -6236,6 +6104,35 @@ state 302
 
 state 303
 
+    (148) item_funcion -> llamadas_func PUNTO_COMA .
+
+    FINAL           reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    IF              reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    IDENTIFICADOR   reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_INT        reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_DOUBLE     reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_BOOL       reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_STRING     reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    VAR             reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    DYNAMIC         reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_MAP        reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_LIST       reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_SET        reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_SYMBOL     reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_OBJECT     reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_FUTURE     reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_STREAM     reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_ITERABLE   reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    TIPO_NEVER      reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    LLAVE_CLAUSURA  reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    ABSTRACT        reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    CLASS           reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    VOID            reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+    $end            reduce using rule 148 (item_funcion -> llamadas_func PUNTO_COMA .)
+
+
+state 304
+
     (140) funcion_flecha -> PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE items_funcion .
 
     ABSTRACT        reduce using rule 140 (funcion_flecha -> PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE items_funcion .)
@@ -6263,21 +6160,21 @@ state 303
     LLAVE_CLAUSURA  reduce using rule 140 (funcion_flecha -> PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE items_funcion .)
 
 
-state 304
+state 305
 
     (137) funcion -> declaracion_general PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion . LLAVE_CLAUSURA
 
-    LLAVE_CLAUSURA  shift and go to state 337
+    LLAVE_CLAUSURA  shift and go to state 338
 
 
-state 305
+state 306
 
     (141) funcion_flecha -> PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE . items_funcion
     (144) items_funcion -> . item_funcion items_funcion
     (145) items_funcion -> . item_funcion
     (146) item_funcion -> . instruccion
     (147) item_funcion -> . instruccion_if
-    (148) item_funcion -> . llamadas_func
+    (148) item_funcion -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -6343,7 +6240,7 @@ state 305
     TIPO_ITERABLE   shift and go to state 30
     TIPO_NEVER      shift and go to state 31
 
-    items_funcion                  shift and go to state 338
+    items_funcion                  shift and go to state 339
     item_funcion                   shift and go to state 247
     instruccion                    shift and go to state 248
     instruccion_if                 shift and go to state 249
@@ -6354,22 +6251,22 @@ state 305
     valor_mapa_lista               shift and go to state 23
     declaracion_general            shift and go to state 245
 
-state 306
+state 307
 
     (11) instruccion_if -> IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control . LLAVE_CLAUSURA
     (12) instruccion_if -> IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control . LLAVE_CLAUSURA instruccion_else
 
-    LLAVE_CLAUSURA  shift and go to state 339
+    LLAVE_CLAUSURA  shift and go to state 340
 
 
-state 307
+state 308
 
     (16) items_estructura_control -> item_estructura_control . items_estructura_control
     (17) items_estructura_control -> item_estructura_control .
     (16) items_estructura_control -> . item_estructura_control items_estructura_control
     (17) items_estructura_control -> . item_estructura_control
     (18) item_estructura_control -> . instruccion
-    (19) item_estructura_control -> . llamadas_func
+    (19) item_estructura_control -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -6433,17 +6330,17 @@ state 307
     TIPO_ITERABLE   shift and go to state 30
     TIPO_NEVER      shift and go to state 31
 
-    item_estructura_control        shift and go to state 307
-    items_estructura_control       shift and go to state 340
-    instruccion                    shift and go to state 308
-    llamadas_func                  shift and go to state 309
+    item_estructura_control        shift and go to state 308
+    items_estructura_control       shift and go to state 341
+    instruccion                    shift and go to state 309
+    llamadas_func                  shift and go to state 310
     asignacion                     shift and go to state 8
     declaracion                    shift and go to state 10
     llamada_func                   shift and go to state 99
     valor_mapa_lista               shift and go to state 23
     declaracion_general            shift and go to state 245
 
-state 308
+state 309
 
     (18) item_estructura_control -> instruccion .
 
@@ -6467,31 +6364,14 @@ state 308
     LLAVE_CLAUSURA  reduce using rule 18 (item_estructura_control -> instruccion .)
 
 
-state 309
-
-    (19) item_estructura_control -> llamadas_func .
-
-    FINAL           reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    IDENTIFICADOR   reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_INT        reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_DOUBLE     reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_BOOL       reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_STRING     reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    VAR             reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    DYNAMIC         reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_MAP        reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_LIST       reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_SET        reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_SYMBOL     reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_OBJECT     reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_FUTURE     reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_STREAM     reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_ITERABLE   reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    TIPO_NEVER      reduce using rule 19 (item_estructura_control -> llamadas_func .)
-    LLAVE_CLAUSURA  reduce using rule 19 (item_estructura_control -> llamadas_func .)
-
-
 state 310
+
+    (19) item_estructura_control -> llamadas_func . PUNTO_COMA
+
+    PUNTO_COMA      shift and go to state 342
+
+
+state 311
 
     (82) expresion_int_no_menos -> expresion_int_no_menos SIGNO_MAS expresion_int_no_menos .
     (82) expresion_int_no_menos -> expresion_int_no_menos . SIGNO_MAS expresion_int_no_menos
@@ -6520,7 +6400,7 @@ state 310
   ! VIRGULILLA      [ reduce using rule 82 (expresion_int_no_menos -> expresion_int_no_menos SIGNO_MAS expresion_int_no_menos .) ]
 
 
-state 311
+state 312
 
     (83) expresion_int_no_menos -> expresion_int_no_menos SIGNO_MENOS expresion_int_no_menos .
     (82) expresion_int_no_menos -> expresion_int_no_menos . SIGNO_MAS expresion_int_no_menos
@@ -6549,7 +6429,7 @@ state 311
   ! VIRGULILLA      [ reduce using rule 83 (expresion_int_no_menos -> expresion_int_no_menos SIGNO_MENOS expresion_int_no_menos .) ]
 
 
-state 312
+state 313
 
     (84) expresion_int_no_menos -> expresion_int_no_menos SIGNO_MULTIPLICACION expresion_int_no_menos .
     (82) expresion_int_no_menos -> expresion_int_no_menos . SIGNO_MAS expresion_int_no_menos
@@ -6578,7 +6458,7 @@ state 312
   ! VIRGULILLA      [ reduce using rule 84 (expresion_int_no_menos -> expresion_int_no_menos SIGNO_MULTIPLICACION expresion_int_no_menos .) ]
 
 
-state 313
+state 314
 
     (85) expresion_int_no_menos -> expresion_int_no_menos PORCENTAJE expresion_int_no_menos .
     (82) expresion_int_no_menos -> expresion_int_no_menos . SIGNO_MAS expresion_int_no_menos
@@ -6607,7 +6487,7 @@ state 313
   ! VIRGULILLA      [ reduce using rule 85 (expresion_int_no_menos -> expresion_int_no_menos PORCENTAJE expresion_int_no_menos .) ]
 
 
-state 314
+state 315
 
     (86) expresion_int_no_menos -> expresion_int_no_menos VIRGULILLA SIGNO_DIVISION . expresion_int_no_menos
     (82) expresion_int_no_menos -> . expresion_int_no_menos SIGNO_MAS expresion_int_no_menos
@@ -6623,9 +6503,9 @@ state 314
     DATO_ENTERO     shift and go to state 188
     IDENTIFICADOR   shift and go to state 183
 
-    expresion_int_no_menos         shift and go to state 341
+    expresion_int_no_menos         shift and go to state 343
 
-state 315
+state 316
 
     (87) expresion_int_no_menos -> PARENTESIS_APERTURA expresion_int_no_menos PARENTESIS_CLAUSURA .
 
@@ -6638,14 +6518,14 @@ state 315
     PARENTESIS_CLAUSURA reduce using rule 87 (expresion_int_no_menos -> PARENTESIS_APERTURA expresion_int_no_menos PARENTESIS_CLAUSURA .)
 
 
-state 316
+state 317
 
     (115) lista -> CORCHETE_APERTURA lista_general CORCHETE_CLAUSURA .
 
     PUNTO_COMA      reduce using rule 115 (lista -> CORCHETE_APERTURA lista_general CORCHETE_CLAUSURA .)
 
 
-state 317
+state 318
 
     (121) lista_general -> valor_general COMA . lista_general
     (120) lista_general -> . valor_general
@@ -6701,7 +6581,7 @@ state 317
     DATO_ENTERO     shift and go to state 102
 
     valor_general                  shift and go to state 272
-    lista_general                  shift and go to state 342
+    lista_general                  shift and go to state 344
     expresion_mat_double           shift and go to state 86
     expresion_logica               shift and go to state 87
     llamadas_func                  shift and go to state 89
@@ -6710,78 +6590,78 @@ state 317
     comparacion                    shift and go to state 96
     llamada_func                   shift and go to state 99
 
-state 318
+state 319
 
     (117) lista -> TIPO_LIST PARENTESIS_APERTURA DATO_ENTERO . PARENTESIS_CLAUSURA
 
-    PARENTESIS_CLAUSURA shift and go to state 343
-
-
-state 319
-
-    (118) lista -> NEW TIPO_LIST CORCHETE_APERTURA . CORCHETE_CLAUSURA
-    (119) lista -> NEW TIPO_LIST CORCHETE_APERTURA . DATO_ENTERO CORCHETE_CLAUSURA
-
-    CORCHETE_CLAUSURA shift and go to state 344
-    DATO_ENTERO     shift and go to state 345
+    PARENTESIS_CLAUSURA shift and go to state 345
 
 
 state 320
 
-    (128) conjunto_especifico -> cast_int LLAVE_APERTURA lista_numeros . LLAVE_CLAUSURA
+    (118) lista -> NEW TIPO_LIST CORCHETE_APERTURA . CORCHETE_CLAUSURA
+    (119) lista -> NEW TIPO_LIST CORCHETE_APERTURA . DATO_ENTERO CORCHETE_CLAUSURA
 
-    LLAVE_CLAUSURA  shift and go to state 346
+    CORCHETE_CLAUSURA shift and go to state 346
+    DATO_ENTERO     shift and go to state 347
 
 
 state 321
+
+    (128) conjunto_especifico -> cast_int LLAVE_APERTURA lista_numeros . LLAVE_CLAUSURA
+
+    LLAVE_CLAUSURA  shift and go to state 348
+
+
+state 322
 
     (122) lista_numeros -> DATO_ENTERO .
     (123) lista_numeros -> DATO_ENTERO . COMA lista_numeros
 
     LLAVE_CLAUSURA  reduce using rule 122 (lista_numeros -> DATO_ENTERO .)
-    COMA            shift and go to state 347
-
-
-state 322
-
-    (129) conjunto_especifico -> cast_double LLAVE_APERTURA lista_dobles . LLAVE_CLAUSURA
-
-    LLAVE_CLAUSURA  shift and go to state 348
+    COMA            shift and go to state 349
 
 
 state 323
+
+    (129) conjunto_especifico -> cast_double LLAVE_APERTURA lista_dobles . LLAVE_CLAUSURA
+
+    LLAVE_CLAUSURA  shift and go to state 350
+
+
+state 324
 
     (124) lista_dobles -> DATO_DOBLE .
     (125) lista_dobles -> DATO_DOBLE . COMA lista_dobles
 
     LLAVE_CLAUSURA  reduce using rule 124 (lista_dobles -> DATO_DOBLE .)
-    COMA            shift and go to state 349
-
-
-state 324
-
-    (130) conjunto_especifico -> cast_string LLAVE_APERTURA lista_cadenas . LLAVE_CLAUSURA
-
-    LLAVE_CLAUSURA  shift and go to state 350
+    COMA            shift and go to state 351
 
 
 state 325
+
+    (130) conjunto_especifico -> cast_string LLAVE_APERTURA lista_cadenas . LLAVE_CLAUSURA
+
+    LLAVE_CLAUSURA  shift and go to state 352
+
+
+state 326
 
     (126) lista_cadenas -> DATO_CADENA_TEXTO .
     (127) lista_cadenas -> DATO_CADENA_TEXTO . COMA lista_cadenas
 
     LLAVE_CLAUSURA  reduce using rule 126 (lista_cadenas -> DATO_CADENA_TEXTO .)
-    COMA            shift and go to state 351
+    COMA            shift and go to state 353
 
 
-state 326
+state 327
 
     (67) bloque_mapa -> LLAVE_APERTURA pares_llave_valor LLAVE_CLAUSURA .
 
     PUNTO_COMA      reduce using rule 67 (bloque_mapa -> LLAVE_APERTURA pares_llave_valor LLAVE_CLAUSURA .)
 
 
-state 327
+state 328
 
     (70) pares_llave_valor -> par_llave_valor COMA . pares_llave_valor
     (70) pares_llave_valor -> . par_llave_valor COMA pares_llave_valor
@@ -6838,7 +6718,7 @@ state 327
     DATO_ENTERO     shift and go to state 102
 
     par_llave_valor                shift and go to state 282
-    pares_llave_valor              shift and go to state 352
+    pares_llave_valor              shift and go to state 354
     valor_general                  shift and go to state 283
     expresion_mat_double           shift and go to state 86
     expresion_logica               shift and go to state 87
@@ -6848,7 +6728,7 @@ state 327
     comparacion                    shift and go to state 96
     llamada_func                   shift and go to state 99
 
-state 328
+state 329
 
     (72) par_llave_valor -> valor_general DOBLE_PUNTO . valor_general
     (73) valor_general -> . expresion_mat_double
@@ -6901,7 +6781,7 @@ state 328
     DATO_DOBLE      shift and go to state 101
     DATO_ENTERO     shift and go to state 102
 
-    valor_general                  shift and go to state 353
+    valor_general                  shift and go to state 355
     expresion_mat_double           shift and go to state 86
     expresion_logica               shift and go to state 87
     llamadas_func                  shift and go to state 89
@@ -6910,14 +6790,14 @@ state 328
     comparacion                    shift and go to state 96
     llamada_func                   shift and go to state 99
 
-state 329
+state 330
 
     (69) bloque_mapa -> NEW TIPO_MAP PARENTESIS_APERTURA . PARENTESIS_CLAUSURA
 
-    PARENTESIS_CLAUSURA shift and go to state 354
+    PARENTESIS_CLAUSURA shift and go to state 356
 
 
-state 330
+state 331
 
     (61) asignacion -> TIPO_LIST SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE IDENTIFICADOR SIGNO_IGUAL . lista PUNTO_COMA
     (115) lista -> . CORCHETE_APERTURA lista_general CORCHETE_CLAUSURA
@@ -6930,37 +6810,37 @@ state 330
     TIPO_LIST       shift and go to state 196
     NEW             shift and go to state 207
 
-    lista                          shift and go to state 355
-
-state 331
-
-    (64) asignacion -> TIPO_SET cast_int IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_numeros . LLAVE_CLAUSURA PUNTO_COMA
-
-    LLAVE_CLAUSURA  shift and go to state 356
-
+    lista                          shift and go to state 357
 
 state 332
 
-    (65) asignacion -> TIPO_SET cast_double IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_dobles . LLAVE_CLAUSURA PUNTO_COMA
-
-    LLAVE_CLAUSURA  shift and go to state 357
-
-
-state 333
-
-    (66) asignacion -> TIPO_SET cast_string IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_cadenas . LLAVE_CLAUSURA PUNTO_COMA
+    (64) asignacion -> TIPO_SET cast_int IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_numeros . LLAVE_CLAUSURA PUNTO_COMA
 
     LLAVE_CLAUSURA  shift and go to state 358
 
 
+state 333
+
+    (65) asignacion -> TIPO_SET cast_double IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_dobles . LLAVE_CLAUSURA PUNTO_COMA
+
+    LLAVE_CLAUSURA  shift and go to state 359
+
+
 state 334
+
+    (66) asignacion -> TIPO_SET cast_string IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_cadenas . LLAVE_CLAUSURA PUNTO_COMA
+
+    LLAVE_CLAUSURA  shift and go to state 360
+
+
+state 335
 
     (31) params -> valor_general COMA params .
 
     PARENTESIS_CLAUSURA reduce using rule 31 (params -> valor_general COMA params .)
 
 
-state 335
+state 336
 
     (134) funcion -> VOID IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA .
 
@@ -6989,14 +6869,14 @@ state 335
     LLAVE_CLAUSURA  reduce using rule 134 (funcion -> VOID IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA .)
 
 
-state 336
+state 337
 
     (136) funcion -> VOID IDENTIFICADOR PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion . LLAVE_CLAUSURA
 
-    LLAVE_CLAUSURA  shift and go to state 359
+    LLAVE_CLAUSURA  shift and go to state 361
 
 
-state 337
+state 338
 
     (137) funcion -> declaracion_general PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA .
 
@@ -7025,7 +6905,7 @@ state 337
     LLAVE_CLAUSURA  reduce using rule 137 (funcion -> declaracion_general PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA .)
 
 
-state 338
+state 339
 
     (141) funcion_flecha -> PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE items_funcion .
 
@@ -7054,7 +6934,7 @@ state 338
     LLAVE_CLAUSURA  reduce using rule 141 (funcion_flecha -> PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE items_funcion .)
 
 
-state 339
+state 340
 
     (11) instruccion_if -> IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .
     (12) instruccion_if -> IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA . instruccion_else
@@ -7085,18 +6965,42 @@ state 339
     TIPO_NEVER      reduce using rule 11 (instruccion_if -> IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .)
     $end            reduce using rule 11 (instruccion_if -> IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .)
     LLAVE_CLAUSURA  reduce using rule 11 (instruccion_if -> IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .)
-    ELSE            shift and go to state 361
+    ELSE            shift and go to state 363
 
-    instruccion_else               shift and go to state 360
+    instruccion_else               shift and go to state 362
 
-state 340
+state 341
 
     (16) items_estructura_control -> item_estructura_control items_estructura_control .
 
     LLAVE_CLAUSURA  reduce using rule 16 (items_estructura_control -> item_estructura_control items_estructura_control .)
 
 
-state 341
+state 342
+
+    (19) item_estructura_control -> llamadas_func PUNTO_COMA .
+
+    FINAL           reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    IDENTIFICADOR   reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_INT        reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_DOUBLE     reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_BOOL       reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_STRING     reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    VAR             reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    DYNAMIC         reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_MAP        reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_LIST       reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_SET        reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_SYMBOL     reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_OBJECT     reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_FUTURE     reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_STREAM     reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_ITERABLE   reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    TIPO_NEVER      reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+    LLAVE_CLAUSURA  reduce using rule 19 (item_estructura_control -> llamadas_func PUNTO_COMA .)
+
+
+state 343
 
     (86) expresion_int_no_menos -> expresion_int_no_menos VIRGULILLA SIGNO_DIVISION expresion_int_no_menos .
     (82) expresion_int_no_menos -> expresion_int_no_menos . SIGNO_MAS expresion_int_no_menos
@@ -7125,93 +7029,93 @@ state 341
   ! VIRGULILLA      [ reduce using rule 86 (expresion_int_no_menos -> expresion_int_no_menos VIRGULILLA SIGNO_DIVISION expresion_int_no_menos .) ]
 
 
-state 342
+state 344
 
     (121) lista_general -> valor_general COMA lista_general .
 
     CORCHETE_CLAUSURA reduce using rule 121 (lista_general -> valor_general COMA lista_general .)
 
 
-state 343
+state 345
 
     (117) lista -> TIPO_LIST PARENTESIS_APERTURA DATO_ENTERO PARENTESIS_CLAUSURA .
 
     PUNTO_COMA      reduce using rule 117 (lista -> TIPO_LIST PARENTESIS_APERTURA DATO_ENTERO PARENTESIS_CLAUSURA .)
 
 
-state 344
+state 346
 
     (118) lista -> NEW TIPO_LIST CORCHETE_APERTURA CORCHETE_CLAUSURA .
 
     PUNTO_COMA      reduce using rule 118 (lista -> NEW TIPO_LIST CORCHETE_APERTURA CORCHETE_CLAUSURA .)
 
 
-state 345
+state 347
 
     (119) lista -> NEW TIPO_LIST CORCHETE_APERTURA DATO_ENTERO . CORCHETE_CLAUSURA
 
-    CORCHETE_CLAUSURA shift and go to state 362
+    CORCHETE_CLAUSURA shift and go to state 364
 
 
-state 346
+state 348
 
     (128) conjunto_especifico -> cast_int LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA .
 
     PUNTO_COMA      reduce using rule 128 (conjunto_especifico -> cast_int LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA .)
 
 
-state 347
+state 349
 
     (123) lista_numeros -> DATO_ENTERO COMA . lista_numeros
     (122) lista_numeros -> . DATO_ENTERO
     (123) lista_numeros -> . DATO_ENTERO COMA lista_numeros
 
-    DATO_ENTERO     shift and go to state 321
+    DATO_ENTERO     shift and go to state 322
 
-    lista_numeros                  shift and go to state 363
+    lista_numeros                  shift and go to state 365
 
-state 348
+state 350
 
     (129) conjunto_especifico -> cast_double LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA .
 
     PUNTO_COMA      reduce using rule 129 (conjunto_especifico -> cast_double LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA .)
 
 
-state 349
+state 351
 
     (125) lista_dobles -> DATO_DOBLE COMA . lista_dobles
     (124) lista_dobles -> . DATO_DOBLE
     (125) lista_dobles -> . DATO_DOBLE COMA lista_dobles
 
-    DATO_DOBLE      shift and go to state 323
+    DATO_DOBLE      shift and go to state 324
 
-    lista_dobles                   shift and go to state 364
+    lista_dobles                   shift and go to state 366
 
-state 350
+state 352
 
     (130) conjunto_especifico -> cast_string LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA .
 
     PUNTO_COMA      reduce using rule 130 (conjunto_especifico -> cast_string LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA .)
 
 
-state 351
+state 353
 
     (127) lista_cadenas -> DATO_CADENA_TEXTO COMA . lista_cadenas
     (126) lista_cadenas -> . DATO_CADENA_TEXTO
     (127) lista_cadenas -> . DATO_CADENA_TEXTO COMA lista_cadenas
 
-    DATO_CADENA_TEXTO shift and go to state 325
+    DATO_CADENA_TEXTO shift and go to state 326
 
-    lista_cadenas                  shift and go to state 365
+    lista_cadenas                  shift and go to state 367
 
-state 352
+state 354
 
     (70) pares_llave_valor -> par_llave_valor COMA pares_llave_valor .
 
     LLAVE_CLAUSURA  reduce using rule 70 (pares_llave_valor -> par_llave_valor COMA pares_llave_valor .)
 
 
-state 353
+state 355
 
     (72) par_llave_valor -> valor_general DOBLE_PUNTO valor_general .
 
@@ -7219,42 +7123,42 @@ state 353
     LLAVE_CLAUSURA  reduce using rule 72 (par_llave_valor -> valor_general DOBLE_PUNTO valor_general .)
 
 
-state 354
+state 356
 
     (69) bloque_mapa -> NEW TIPO_MAP PARENTESIS_APERTURA PARENTESIS_CLAUSURA .
 
     PUNTO_COMA      reduce using rule 69 (bloque_mapa -> NEW TIPO_MAP PARENTESIS_APERTURA PARENTESIS_CLAUSURA .)
 
 
-state 355
-
-    (61) asignacion -> TIPO_LIST SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE IDENTIFICADOR SIGNO_IGUAL lista . PUNTO_COMA
-
-    PUNTO_COMA      shift and go to state 366
-
-
-state 356
-
-    (64) asignacion -> TIPO_SET cast_int IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA . PUNTO_COMA
-
-    PUNTO_COMA      shift and go to state 367
-
-
 state 357
 
-    (65) asignacion -> TIPO_SET cast_double IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA . PUNTO_COMA
+    (61) asignacion -> TIPO_LIST SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE IDENTIFICADOR SIGNO_IGUAL lista . PUNTO_COMA
 
     PUNTO_COMA      shift and go to state 368
 
 
 state 358
 
-    (66) asignacion -> TIPO_SET cast_string IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA . PUNTO_COMA
+    (64) asignacion -> TIPO_SET cast_int IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA . PUNTO_COMA
 
     PUNTO_COMA      shift and go to state 369
 
 
 state 359
+
+    (65) asignacion -> TIPO_SET cast_double IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA . PUNTO_COMA
+
+    PUNTO_COMA      shift and go to state 370
+
+
+state 360
+
+    (66) asignacion -> TIPO_SET cast_string IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA . PUNTO_COMA
+
+    PUNTO_COMA      shift and go to state 371
+
+
+state 361
 
     (136) funcion -> VOID IDENTIFICADOR PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA .
 
@@ -7283,7 +7187,7 @@ state 359
     LLAVE_CLAUSURA  reduce using rule 136 (funcion -> VOID IDENTIFICADOR PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA .)
 
 
-state 360
+state 362
 
     (12) instruccion_if -> IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else .
 
@@ -7312,45 +7216,45 @@ state 360
     LLAVE_CLAUSURA  reduce using rule 12 (instruccion_if -> IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else .)
 
 
-state 361
+state 363
 
     (13) instruccion_else -> ELSE . IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else
     (14) instruccion_else -> ELSE . IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA
     (15) instruccion_else -> ELSE . LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA
 
-    IF              shift and go to state 370
-    LLAVE_APERTURA  shift and go to state 371
+    IF              shift and go to state 372
+    LLAVE_APERTURA  shift and go to state 373
 
 
-state 362
+state 364
 
     (119) lista -> NEW TIPO_LIST CORCHETE_APERTURA DATO_ENTERO CORCHETE_CLAUSURA .
 
     PUNTO_COMA      reduce using rule 119 (lista -> NEW TIPO_LIST CORCHETE_APERTURA DATO_ENTERO CORCHETE_CLAUSURA .)
 
 
-state 363
+state 365
 
     (123) lista_numeros -> DATO_ENTERO COMA lista_numeros .
 
     LLAVE_CLAUSURA  reduce using rule 123 (lista_numeros -> DATO_ENTERO COMA lista_numeros .)
 
 
-state 364
+state 366
 
     (125) lista_dobles -> DATO_DOBLE COMA lista_dobles .
 
     LLAVE_CLAUSURA  reduce using rule 125 (lista_dobles -> DATO_DOBLE COMA lista_dobles .)
 
 
-state 365
+state 367
 
     (127) lista_cadenas -> DATO_CADENA_TEXTO COMA lista_cadenas .
 
     LLAVE_CLAUSURA  reduce using rule 127 (lista_cadenas -> DATO_CADENA_TEXTO COMA lista_cadenas .)
 
 
-state 366
+state 368
 
     (61) asignacion -> TIPO_LIST SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE IDENTIFICADOR SIGNO_IGUAL lista PUNTO_COMA .
 
@@ -7379,7 +7283,7 @@ state 366
     LLAVE_CLAUSURA  reduce using rule 61 (asignacion -> TIPO_LIST SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE IDENTIFICADOR SIGNO_IGUAL lista PUNTO_COMA .)
 
 
-state 367
+state 369
 
     (64) asignacion -> TIPO_SET cast_int IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA PUNTO_COMA .
 
@@ -7408,7 +7312,7 @@ state 367
     LLAVE_CLAUSURA  reduce using rule 64 (asignacion -> TIPO_SET cast_int IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA PUNTO_COMA .)
 
 
-state 368
+state 370
 
     (65) asignacion -> TIPO_SET cast_double IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA PUNTO_COMA .
 
@@ -7437,7 +7341,7 @@ state 368
     LLAVE_CLAUSURA  reduce using rule 65 (asignacion -> TIPO_SET cast_double IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA PUNTO_COMA .)
 
 
-state 369
+state 371
 
     (66) asignacion -> TIPO_SET cast_string IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA PUNTO_COMA .
 
@@ -7466,21 +7370,21 @@ state 369
     LLAVE_CLAUSURA  reduce using rule 66 (asignacion -> TIPO_SET cast_string IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA PUNTO_COMA .)
 
 
-state 370
+state 372
 
     (13) instruccion_else -> ELSE IF . PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else
     (14) instruccion_else -> ELSE IF . PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA
 
-    PARENTESIS_APERTURA shift and go to state 372
+    PARENTESIS_APERTURA shift and go to state 374
 
 
-state 371
+state 373
 
     (15) instruccion_else -> ELSE LLAVE_APERTURA . items_estructura_control LLAVE_CLAUSURA
     (16) items_estructura_control -> . item_estructura_control items_estructura_control
     (17) items_estructura_control -> . item_estructura_control
     (18) item_estructura_control -> . instruccion
-    (19) item_estructura_control -> . llamadas_func
+    (19) item_estructura_control -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -7543,17 +7447,17 @@ state 371
     TIPO_ITERABLE   shift and go to state 30
     TIPO_NEVER      shift and go to state 31
 
-    items_estructura_control       shift and go to state 373
-    item_estructura_control        shift and go to state 307
-    instruccion                    shift and go to state 308
-    llamadas_func                  shift and go to state 309
+    items_estructura_control       shift and go to state 375
+    item_estructura_control        shift and go to state 308
+    instruccion                    shift and go to state 309
+    llamadas_func                  shift and go to state 310
     asignacion                     shift and go to state 8
     declaracion                    shift and go to state 10
     llamada_func                   shift and go to state 99
     valor_mapa_lista               shift and go to state 23
     declaracion_general            shift and go to state 245
 
-state 372
+state 374
 
     (13) instruccion_else -> ELSE IF PARENTESIS_APERTURA . expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else
     (14) instruccion_else -> ELSE IF PARENTESIS_APERTURA . expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA
@@ -7592,31 +7496,31 @@ state 372
     DATO_DOBLE      shift and go to state 101
     DATO_ENTERO     shift and go to state 102
 
-    expresion_logica               shift and go to state 374
+    expresion_logica               shift and go to state 376
     comparacion                    shift and go to state 96
     expresion_mat_double           shift and go to state 122
     expresion_double_no_menos      shift and go to state 92
 
-state 373
+state 375
 
     (15) instruccion_else -> ELSE LLAVE_APERTURA items_estructura_control . LLAVE_CLAUSURA
 
-    LLAVE_CLAUSURA  shift and go to state 375
+    LLAVE_CLAUSURA  shift and go to state 377
 
 
-state 374
+state 376
 
     (13) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica . PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else
     (14) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica . PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA
     (101) expresion_logica -> expresion_logica . PLECA PLECA expresion_logica
     (102) expresion_logica -> expresion_logica . ET ET expresion_logica
 
-    PARENTESIS_CLAUSURA shift and go to state 376
+    PARENTESIS_CLAUSURA shift and go to state 378
     PLECA           shift and go to state 150
     ET              shift and go to state 151
 
 
-state 375
+state 377
 
     (15) instruccion_else -> ELSE LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .
 
@@ -7645,22 +7549,22 @@ state 375
     LLAVE_CLAUSURA  reduce using rule 15 (instruccion_else -> ELSE LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .)
 
 
-state 376
+state 378
 
     (13) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA . LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else
     (14) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA . LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA
 
-    LLAVE_APERTURA  shift and go to state 377
+    LLAVE_APERTURA  shift and go to state 379
 
 
-state 377
+state 379
 
     (13) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA . items_estructura_control LLAVE_CLAUSURA instruccion_else
     (14) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA . items_estructura_control LLAVE_CLAUSURA
     (16) items_estructura_control -> . item_estructura_control items_estructura_control
     (17) items_estructura_control -> . item_estructura_control
     (18) item_estructura_control -> . instruccion
-    (19) item_estructura_control -> . llamadas_func
+    (19) item_estructura_control -> . llamadas_func PUNTO_COMA
     (8) instruccion -> . asignacion
     (9) instruccion -> . FINAL asignacion
     (10) instruccion -> . declaracion
@@ -7723,25 +7627,25 @@ state 377
     TIPO_ITERABLE   shift and go to state 30
     TIPO_NEVER      shift and go to state 31
 
-    items_estructura_control       shift and go to state 378
-    item_estructura_control        shift and go to state 307
-    instruccion                    shift and go to state 308
-    llamadas_func                  shift and go to state 309
+    items_estructura_control       shift and go to state 380
+    item_estructura_control        shift and go to state 308
+    instruccion                    shift and go to state 309
+    llamadas_func                  shift and go to state 310
     asignacion                     shift and go to state 8
     declaracion                    shift and go to state 10
     llamada_func                   shift and go to state 99
     valor_mapa_lista               shift and go to state 23
     declaracion_general            shift and go to state 245
 
-state 378
+state 380
 
     (13) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control . LLAVE_CLAUSURA instruccion_else
     (14) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control . LLAVE_CLAUSURA
 
-    LLAVE_CLAUSURA  shift and go to state 379
+    LLAVE_CLAUSURA  shift and go to state 381
 
 
-state 379
+state 381
 
     (13) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA . instruccion_else
     (14) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .
@@ -7772,11 +7676,11 @@ state 379
     TIPO_NEVER      reduce using rule 14 (instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .)
     $end            reduce using rule 14 (instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .)
     LLAVE_CLAUSURA  reduce using rule 14 (instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA .)
-    ELSE            shift and go to state 361
+    ELSE            shift and go to state 363
 
-    instruccion_else               shift and go to state 380
+    instruccion_else               shift and go to state 382
 
-state 380
+state 382
 
     (13) instruccion_else -> ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else .
 
@@ -7856,11 +7760,6 @@ WARNING: shift/reduce conflict for PLECA in state 296 resolved as shift
 WARNING: shift/reduce conflict for ET in state 296 resolved as shift
 WARNING: shift/reduce conflict for PLECA in state 297 resolved as shift
 WARNING: shift/reduce conflict for ET in state 297 resolved as shift
-WARNING: shift/reduce conflict for SIGNO_MAS in state 310 resolved as shift
-WARNING: shift/reduce conflict for SIGNO_MENOS in state 310 resolved as shift
-WARNING: shift/reduce conflict for SIGNO_MULTIPLICACION in state 310 resolved as shift
-WARNING: shift/reduce conflict for PORCENTAJE in state 310 resolved as shift
-WARNING: shift/reduce conflict for VIRGULILLA in state 310 resolved as shift
 WARNING: shift/reduce conflict for SIGNO_MAS in state 311 resolved as shift
 WARNING: shift/reduce conflict for SIGNO_MENOS in state 311 resolved as shift
 WARNING: shift/reduce conflict for SIGNO_MULTIPLICACION in state 311 resolved as shift
@@ -7876,11 +7775,16 @@ WARNING: shift/reduce conflict for SIGNO_MENOS in state 313 resolved as shift
 WARNING: shift/reduce conflict for SIGNO_MULTIPLICACION in state 313 resolved as shift
 WARNING: shift/reduce conflict for PORCENTAJE in state 313 resolved as shift
 WARNING: shift/reduce conflict for VIRGULILLA in state 313 resolved as shift
-WARNING: shift/reduce conflict for SIGNO_MAS in state 341 resolved as shift
-WARNING: shift/reduce conflict for SIGNO_MENOS in state 341 resolved as shift
-WARNING: shift/reduce conflict for SIGNO_MULTIPLICACION in state 341 resolved as shift
-WARNING: shift/reduce conflict for PORCENTAJE in state 341 resolved as shift
-WARNING: shift/reduce conflict for VIRGULILLA in state 341 resolved as shift
+WARNING: shift/reduce conflict for SIGNO_MAS in state 314 resolved as shift
+WARNING: shift/reduce conflict for SIGNO_MENOS in state 314 resolved as shift
+WARNING: shift/reduce conflict for SIGNO_MULTIPLICACION in state 314 resolved as shift
+WARNING: shift/reduce conflict for PORCENTAJE in state 314 resolved as shift
+WARNING: shift/reduce conflict for VIRGULILLA in state 314 resolved as shift
+WARNING: shift/reduce conflict for SIGNO_MAS in state 343 resolved as shift
+WARNING: shift/reduce conflict for SIGNO_MENOS in state 343 resolved as shift
+WARNING: shift/reduce conflict for SIGNO_MULTIPLICACION in state 343 resolved as shift
+WARNING: shift/reduce conflict for PORCENTAJE in state 343 resolved as shift
+WARNING: shift/reduce conflict for VIRGULILLA in state 343 resolved as shift
 WARNING: reduce/reduce conflict in state 84 resolved using rule (expresion_double_no_menos -> IDENTIFICADOR)
 WARNING: rejected rule (expresion_logica -> IDENTIFICADOR) in state 84
 WARNING: reduce/reduce conflict in state 121 resolved using rule (expresion_double_no_menos -> IDENTIFICADOR)

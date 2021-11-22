@@ -40,7 +40,6 @@ def p_items_estructura_control(p):
 
 def p_item_estructura_control(p):
     '''item_estructura_control : instruccion
-                                | instruccion_if
                                 | llamadas_func'''
 
 #Reglas de clases - XavierCarlier

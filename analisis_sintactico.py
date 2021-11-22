@@ -6,8 +6,7 @@ start = 'programa'
 
 def p_programa(p):
     '''programa : item_programa programa
-                | item_programa
-                | funcion'''
+                | item_programa'''
 
 def p_item_programa(p):
     '''item_programa : instruccion
@@ -15,9 +14,6 @@ def p_item_programa(p):
                     | ABSTRACT clase
                     | funcion
                     | instruccion_if'''
-
-def p_instrucciones(p):
-    '''instrucciones : instruccion'''
 
 def p_instruccion(p):
     '''instruccion : asignacion
@@ -63,7 +59,6 @@ def p_nuevo_objeto(p):
 def p_llamadas_func(p):
     '''llamadas_func : IDENTIFICADOR PUNTO llamadas_func
                     | llamada_func PUNTO llamadas_func
-                    | IDENTIFICADOR
                     | llamada_func'''
 
 def p_llamada_func(p):
@@ -231,20 +226,29 @@ def p_cast_string(p):
 
 # Regla de Funciones - Jeffrey Prado
 def p_funcion(p):
-    '''funcion : VOID IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
-                | declaracion_general PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
-                | VOID IDENTIFICADOR PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
-                | declaracion_general PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
+    '''funcion : VOID IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
+                | declaracion_general PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
+                | VOID IDENTIFICADOR PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
+                | declaracion_general PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
                 | VOID IDENTIFICADOR funcion_flecha
                 | declaracion_general funcion_flecha'''
 
 def p_funcion_flecha(p):
-    '''funcion_flecha : PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE instruccion
-                      | PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE instruccion'''
+    '''funcion_flecha : PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE items_funcion
+                      | PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE items_funcion'''
 
 def p_parametros(p):
     '''parametros : declaracion_general
                     | declaracion_general COMA parametros'''
+
+def p_items_funcion(p):
+    '''items_funcion : item_funcion items_funcion
+                    | item_funcion'''
+
+def p_item_funcion(p):
+    '''item_funcion : instruccion
+                    | instruccion_if
+                    | llamadas_func'''
 
 
 def p_error(p):

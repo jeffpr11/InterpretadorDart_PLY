@@ -1,6 +1,7 @@
 import ply.yacc as yacc
 from analisis_lexico import tokens
 
+#falta por hacer While, For, Switch Case, pruebas para funciones, sets y listas
 start = 'programa'
 
 def p_programa(p):
@@ -10,12 +11,33 @@ def p_programa(p):
 def p_item_programa(p):
     '''item_programa : instruccion
                     | clase
-                    | ABSTRACT clase'''
+                    | ABSTRACT clase
+                    | funcion
+                    | instruccion_if'''
 
 def p_instruccion(p):
     '''instruccion : asignacion
                     | FINAL asignacion
                     | declaracion'''
+
+#Reglas if-else - XavierCarlier
+def p_instruccion_if(p):
+    '''instruccion_if : IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA
+                    | IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else'''
+
+def p_instruccion_else(p):
+    '''instruccion_else : ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA instruccion_else
+                        | ELSE IF PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA
+                        | ELSE LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA'''
+
+def p_items_estructura_control(p):
+    '''items_estructura_control : item_estructura_control items_estructura_control
+                                | item_estructura_control'''
+
+def p_item_estructura_control(p):
+    '''item_estructura_control : instruccion
+                                | instruccion_if
+                                | llamadas_func'''
 
 #Reglas de clases - XavierCarlier
 #todo:constructores
@@ -28,7 +50,8 @@ def p_bloque_clase(p):
                     | item_bloque_clase'''
 
 def p_item_bloque_clase(p):
-    '''item_bloque_clase : instruccion'''
+    '''item_bloque_clase : instruccion
+                        | funcion'''
 
 def p_nuevo_objeto(p):
     '''nuevo_objeto : NEW IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA'''
@@ -99,8 +122,7 @@ def p_par_llave_valor(p):
     '''par_llave_valor : valor_general DOBLE_PUNTO valor_general'''
 
 def p_valor_general(p):
-    '''valor_general : IDENTIFICADOR
-                    | expresion_mat_double
+    '''valor_general : expresion_mat_double
                     | expresion_logica
                     | DATO_CADENA_TEXTO
                     | llamadas_func

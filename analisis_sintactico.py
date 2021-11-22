@@ -1,17 +1,37 @@
 import ply.yacc as yacc
 from analisis_lexico import tokens
 
-start = 'instrucciones'
+start = 'programa'
 
+def p_programa(p):
+    '''programa : item_programa programa
+                | item_programa'''
 
-def p_instrucciones(p):
-    '''instrucciones : instruccion instrucciones
-                    | instruccion'''
+def p_item_programa(p):
+    '''item_programa : instruccion
+                    | clase
+                    | ABSTRACT clase'''
 
 def p_insruccion(p):
     '''instruccion : asignacion
-                    | declaracion
-                    | llamadas_func PUNTO_COMA'''
+                    | FINAL asignacion
+                    | declaracion'''
+
+#Reglas de clases - XavierCarlier
+#todo:constructores
+
+def p_clase(p):
+    '''clase : CLASS IDENTIFICADOR LLAVE_APERTURA bloque_clase LLAVE_CLAUSURA'''
+
+def p_bloque_clase(p):
+    '''bloque_clase : item_bloque_clase bloque_clase
+                    | item_bloque_clase'''
+
+def p_item_bloque_clase(p):
+    '''item_bloque_clase : instruccion'''
+
+def p_nuevo_objeto(p):
+    '''nuevo_objeto : NEW IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA'''
 
 #Reglas de llamadas a funciones - XavierCarlier
 def p_llamadas_func(p):
@@ -80,6 +100,7 @@ def p_valor_general(p):
                     | expresion_logica
                     | DATO_CADENA_TEXTO
                     | llamadas_func
+                    | nuevo_objeto
                     | NULL'''
 
 def p_valor_mapa_lista(p):

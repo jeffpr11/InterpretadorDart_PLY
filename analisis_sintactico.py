@@ -11,11 +11,18 @@ def p_instrucciones(p):
 def p_insruccion(p):
     '''instruccion : asignacion
                     | declaracion
-                    | llamada_func'''
+                    | llamadas_func PUNTO_COMA'''
 
 #Reglas de llamadas a funciones - XavierCarlier
+def p_llamadas_func(p):
+    '''llamadas_func : IDENTIFICADOR PUNTO llamadas_func
+                    | llamada_func PUNTO llamadas_func
+                    | IDENTIFICADOR
+                    | llamada_func'''
+
 def p_llamada_func(p):
-    '''llamada_func : IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA PUNTO_COMA'''
+    '''llamada_func : IDENTIFICADOR PARENTESIS_APERTURA params PARENTESIS_CLAUSURA
+                    | IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA'''
 
 def p_params(p):
     '''params : valor_general COMA params
@@ -49,18 +56,34 @@ def p_asignacion(p):
                 | VAR IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
                 | DYNAMIC IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
                 | IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
-                | VAR IDENTIFICADOR SIGNO_IGUAL llamada_func
-                | DYNAMIC IDENTIFICADOR SIGNO_IGUAL llamada_func
-                | IDENTIFICADOR SIGNO_IGUAL llamada_func
                 | IDENTIFICADOR SIGNO_MAS SIGNO_IGUAL expresion_mat_double PUNTO_COMA
-                | IDENTIFICADOR SIGNO_MENOS SIGNO_IGUAL expresion_mat_double PUNTO_COMA'''
+                | IDENTIFICADOR SIGNO_MENOS SIGNO_IGUAL expresion_mat_double PUNTO_COMA
+                | TIPO_MAP IDENTIFICADOR SIGNO_IGUAL bloque_mapa PUNTO_COMA
+                | valor_mapa_lista SIGNO_IGUAL valor_general PUNTO_COMA'''
+
+#Reglas de mapa - XavierCarlier
+def p_bloque_mapa(p):
+    '''bloque_mapa : LLAVE_APERTURA pares_llave_valor LLAVE_CLAUSURA
+                    | LLAVE_APERTURA LLAVE_CLAUSURA
+                    | NEW TIPO_MAP PARENTESIS_APERTURA PARENTESIS_CLAUSURA'''
+
+def p_pares_llave_valor(p):
+    '''pares_llave_valor : par_llave_valor COMA pares_llave_valor
+                        | par_llave_valor'''
+
+def p_par_llave_valor(p):
+    '''par_llave_valor : valor_general DOBLE_PUNTO valor_general'''
 
 def p_valor_general(p):
     '''valor_general : IDENTIFICADOR
                     | expresion_mat_double
                     | expresion_logica
                     | DATO_CADENA_TEXTO
+                    | llamadas_func
                     | NULL'''
+
+def p_valor_mapa_lista(p):
+    '''valor_mapa_lista : IDENTIFICADOR CORCHETE_APERTURA valor_general CORCHETE_CLAUSURA'''
 
 #reglas para operaciones matemáticas int y double - XavierCarlier
 def p_expresion_mat_int(p):

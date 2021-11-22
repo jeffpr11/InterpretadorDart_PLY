@@ -93,7 +93,12 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            'Stream valor;',
            'Iterable valor;',
            'Never valor;',
-           'print(\'bro\',2,xR6, true);',]
+           'print(\'bro\',2,xR6, true);',
+           'Map mapA23 = {valor:generador1(), "abc": 1,true:false};',
+           'Map mapA23 = {};',
+           'Map mapA23 = new Map();',
+           'mapA23[valor] = 123.9;',
+           'abc.func(a,"3").bro.OK();']
 for prueba in pruebas:
     print(prueba)
     receiveParse(prueba)

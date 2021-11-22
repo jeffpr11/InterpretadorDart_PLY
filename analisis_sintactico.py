@@ -88,9 +88,12 @@ def p_asignacion(p):
                 | TIPO_MAP IDENTIFICADOR SIGNO_IGUAL bloque_mapa PUNTO_COMA
                 | valor_mapa_lista SIGNO_IGUAL valor_general PUNTO_COMA
                 | TIPO_LIST IDENTIFICADOR SIGNO_IGUAL lista PUNTO_COMA
-                | TIPO_LIST SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE SIGNO_IGUAL lista PUNTO_COMA
+                | TIPO_LIST SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE IDENTIFICADOR SIGNO_IGUAL lista PUNTO_COMA
+                | VAR IDENTIFICADOR SIGNO_IGUAL lista PUNTO_COMA
                 | VAR IDENTIFICADOR SIGNO_IGUAL conjunto_especifico PUNTO_COMA
-                | TIPO_SET SIGNO_MENOR_QUE IDENTIFICADOR SIGNO_MAYOR_QUE SIGNO_IGUAL conjunto PUNTO_COMA'''
+                | TIPO_SET cast_int IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA PUNTO_COMA
+                | TIPO_SET cast_double IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA PUNTO_COMA
+                | TIPO_SET cast_string IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA PUNTO_COMA'''
 
 #Reglas de mapa - XavierCarlier
 def p_bloque_mapa(p):
@@ -170,7 +173,7 @@ def p_comparacion(p):
 def p_lista(p):
     '''lista : CORCHETE_APERTURA lista_general CORCHETE_CLAUSURA
                 | CORCHETE_APERTURA CORCHETE_CLAUSURA
-                | CORCHETE_APERTURA DATO_ENTERO CORCHETE_CLAUSURA
+                | TIPO_LIST PARENTESIS_APERTURA DATO_ENTERO PARENTESIS_CLAUSURA
                 | NEW TIPO_LIST CORCHETE_APERTURA CORCHETE_CLAUSURA
                 | NEW TIPO_LIST CORCHETE_APERTURA DATO_ENTERO CORCHETE_CLAUSURA'''
 
@@ -191,28 +194,32 @@ def p_lista_cadenas(p):
                         | DATO_CADENA_TEXTO COMA lista_cadenas'''
 
 # Reglas de Conjunto - Jeffrey Prado
-def p_conjunto(p):
-    '''conjunto : LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA
-                    | LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA
-                    | LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA'''
-
 def p_conjunto_especifico(p):
-    '''conjunto_especifico : SIGNO_MENOR_QUE TIPO_INT SIGNO_MAYOR_QUE lista_numeros LLAVE_CLAUSURA
-                            | SIGNO_MENOR_QUE TIPO_DOUBLE SIGNO_MAYOR_QUE lista_dobles LLAVE_CLAUSURA
-                            | SIGNO_MENOR_QUE TIPO_STRING SIGNO_MAYOR_QUE lista_cadenas LLAVE_CLAUSURA'''
+    '''conjunto_especifico : cast_int LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA
+                            | cast_double LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA
+                            | cast_string LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA'''
+
+def p_cast_int(p):
+    '''cast_int : SIGNO_MENOR_QUE TIPO_INT SIGNO_MAYOR_QUE'''
+
+def p_cast_double(p):
+    '''cast_double : SIGNO_MENOR_QUE TIPO_DOUBLE SIGNO_MAYOR_QUE'''
+
+def p_cast_string(p):
+    '''cast_string : SIGNO_MENOR_QUE TIPO_STRING SIGNO_MAYOR_QUE'''
 
 # Regla de Funciones - Jeffrey Prado
 def p_funcion(p):
     '''funcion : VOID IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
                 | declaracion_general PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
                 | VOID IDENTIFICADOR PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
-                | declaracion_general PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA'''
+                | declaracion_general PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
+                | VOID IDENTIFICADOR funcion_flecha
+                | declaracion_general funcion_flecha'''
 
-                # TODO: revisar funcion flecha
-                # declaracion_general SIGNO_IGUAL PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
-                # | declaracion_general SIGNO_IGUAL PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA
-                # | declaracion_general SIGNO_IGUAL PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
-                # | declaracion_general SIGNO_IGUAL PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE LLAVE_APERTURA instrucciones LLAVE_CLAUSURA
+def p_funcion_flecha(p):
+    '''funcion_flecha : PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE instruccion
+                      | PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE instruccion'''
 
 def p_parametros(p):
     '''parametros : declaracion_general

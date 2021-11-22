@@ -95,6 +95,11 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            'Iterable valor;',
            'Never valor;',
            'valor = print(\'bro\',2,xR6, true);',
+           '''List lista = [1,'2',3];''',
+           '''var myList = List(3);''',
+           '''List lista = [1,'hola',3];''',
+           '''Set<int> conjunto = {1,2,3};''',
+           '''var conjunto = <int>{1,2,3};''',
            'Map mapA23 = {valor:generador1(), "abc": 1,true:false};',
            'Map mapA23 = {};',
            'Map mapA23 = new Map();',
@@ -106,7 +111,9 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            '''void suma() { mapA23 = 1; }''',
            '''int suma() { mapA23 = 'asd'; }''',
            '''void suma(int numero1, int numero2) { mapA23 = 1; }''',
-           '''int suma(int numero1, int numero2) { mapA23 = numero1 + numero2; }''',]
+           '''int suma(int numero1, int numero2) { mapA23 = numero1 + numero2; }''',
+           '''void cambiar() => cadena = 'asd';''',
+           '''int suma(int numero1, int numero2) => valor = numero1 + numero2;''',]
 for prueba in pruebas:
     print(prueba)
     receiveParse(prueba)

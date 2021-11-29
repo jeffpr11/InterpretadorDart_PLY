@@ -131,7 +131,8 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            '''void suma(int numero1, int numero2) { mapA23 = 1; }''',
            '''int suma(int numero1, int numero2) { mapA23 = numero1 + numero2; }''',
            '''void cambiar() => cadena = 'asd';''',
-           '''int suma(int numero1, int numero2) => valor = numero1 + numero2;''',]
+           '''int suma(int numero1, int numero2) => valor = numero1 + numero2;otraFunc();''',
+           '''Set<int> conjunto = {1,4,5,3,5};''']
 for prueba in pruebas:
     print(prueba)
     receiveParse(prueba)

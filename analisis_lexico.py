@@ -170,8 +170,10 @@ lexer = lex.lex()
 # Función para probar una entrada - Xavier Carlier
 def receiveLex(s):
     lexer.input(s)
+    tokens = []
     while True:
         token = lexer.token()
         if not token:
             break
-        print(token)
+        tokens.append(token)
+    return tokens

@@ -57,7 +57,9 @@ algoritmoPrueba = '''
                       return factorial;
                     }
                 '''
-receiveLex(algoritmoPrueba)
+resultadoLex = receiveLex(algoritmoPrueba)
+for token in resultadoLex:
+    print(token)
 
 pruebaInt = '''int valor=-(3*4); 
             double valor = 5-2.898+4*(1.078/3)%2;

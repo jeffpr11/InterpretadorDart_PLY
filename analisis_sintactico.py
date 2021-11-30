@@ -1,7 +1,7 @@
 import ply.yacc as yacc
 from analisis_lexico import tokens
 
-#falta por hacer While, For, Switch Case, pruebas para funciones, sets y listas
+#falta por hacer For
 start = 'programa'
 
 def p_programa(p):
@@ -13,12 +13,51 @@ def p_item_programa(p):
                     | clase
                     | ABSTRACT clase
                     | funcion
-                    | instruccion_if'''
+                    | instruccion_if
+                    | instruccion_while
+                    | import'''
+
+def p_import(p):
+    '''import : IMPORT DATO_CADENA_TEXTO AS IDENTIFICADOR PUNTO_COMA
+                | IMPORT DATO_CADENA_TEXTO PUNTO_COMA'''
 
 def p_instruccion(p):
     '''instruccion : asignacion
                     | FINAL asignacion
-                    | declaracion'''
+                    | declaracion
+                    | operacion_unitaria PUNTO_COMA'''
+
+def p_operacion_unitaria(p):
+    '''operacion_unitaria : IDENTIFICADOR SIGNO_MAS SIGNO_MAS
+                        | IDENTIFICADOR SIGNO_MENOS SIGNO_MENOS
+                        | SIGNO_MAS SIGNO_MAS IDENTIFICADOR
+                        | SIGNO_MENOS SIGNO_MENOS IDENTIFICADOR'''
+
+#Reglas while - XavierCarlier
+def p_instruccion_while(p):
+    '''instruccion_while : WHILE PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA'''
+
+#Reglas switch-case - XavierCarlier
+def p_instruccion_switch(p):
+    '''instruccion_switch : SWITCH PARENTESIS_APERTURA IDENTIFICADOR PARENTESIS_CLAUSURA LLAVE_APERTURA bloque_switch LLAVE_CLAUSURA'''
+
+def p_bloque_switch(p):
+    '''bloque_switch : instrucciones_case instruccion_default
+                    | instrucciones_case'''
+
+def p_instrucciones_case(p):
+    '''instrucciones_case : instruccion_case instrucciones_case
+                            | instruccion_case'''
+
+def p_instruccion_case(p):
+    '''instruccion_case : CASE valor_general DOBLE_PUNTO LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA BREAK PUNTO_COMA
+                        | CASE valor_general DOBLE_PUNTO instruccion BREAK PUNTO_COMA
+                        | CASE valor_general DOBLE_PUNTO llamadas_func PUNTO_COMA BREAK PUNTO_COMA'''
+
+def p_instruccion_default(p):
+    '''instruccion_default : DEFAULT DOBLE_PUNTO LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA BREAK PUNTO_COMA
+                            | DEFAULT DOBLE_PUNTO instruccion BREAK PUNTO_COMA
+                            | DEFAULT DOBLE_PUNTO llamadas_func PUNTO_COMA BREAK PUNTO_COMA'''
 
 #Reglas if-else - XavierCarlier
 def p_instruccion_if(p):
@@ -36,7 +75,9 @@ def p_items_estructura_control(p):
 
 def p_item_estructura_control(p):
     '''item_estructura_control : instruccion
-                                | llamadas_func PUNTO_COMA'''
+                                | llamadas_func PUNTO_COMA
+                                | instruccion_if
+                                | instruccion_while'''
 
 #Reglas de clases - XavierCarlier
 #todo:constructores
@@ -71,21 +112,24 @@ def p_params(p):
 
 #Reglas de declaraciones - XavierCarlier - Jeffrey Prado
 def p_declaracion_general(p):
-    '''declaracion_general : TIPO_INT IDENTIFICADOR
-                | TIPO_DOUBLE IDENTIFICADOR
-                | TIPO_BOOL IDENTIFICADOR
-                | VAR IDENTIFICADOR
-                | DYNAMIC IDENTIFICADOR
-                | TIPO_STRING IDENTIFICADOR
-                | TIPO_LIST IDENTIFICADOR
-                | TIPO_SET IDENTIFICADOR
-                | TIPO_MAP IDENTIFICADOR
-                | TIPO_SYMBOL IDENTIFICADOR
-                | TIPO_OBJECT IDENTIFICADOR
-                | TIPO_FUTURE IDENTIFICADOR
-                | TIPO_STREAM IDENTIFICADOR
-                | TIPO_ITERABLE IDENTIFICADOR
-                | TIPO_NEVER IDENTIFICADOR'''
+    '''declaracion_general : tipos_declaracion IDENTIFICADOR
+                            | TIPO_MAP IDENTIFICADOR
+                            | TIPO_LIST IDENTIFICADOR
+                            | VAR IDENTIFICADOR
+                            | DYNAMIC IDENTIFICADOR
+                            | TIPO_BOOL IDENTIFICADOR
+                            | TIPO_DOUBLE IDENTIFICADOR
+                            | TIPO_INT IDENTIFICADOR
+                            | TIPO_STRING IDENTIFICADOR'''
+
+def p_tipos_declaracion(p):
+    '''tipos_declaracion : TIPO_SET
+                        | TIPO_SYMBOL
+                        | TIPO_OBJECT
+                        | TIPO_FUTURE
+                        | TIPO_STREAM
+                        | TIPO_ITERABLE
+                        | TIPO_NEVER'''
 
 def p_declaracion(p):
     '''declaracion : declaracion_general PUNTO_COMA'''
@@ -226,7 +270,8 @@ def p_cast_string(p):
 
 # Regla de Funciones - Jeffrey Prado
 def p_funcion(p):
-    '''funcion : VOID IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
+    '''funcion : MAIN PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
+                | VOID IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
                 | declaracion_general PARENTESIS_APERTURA PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
                 | VOID IDENTIFICADOR PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
                 | declaracion_general PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA LLAVE_APERTURA items_funcion LLAVE_CLAUSURA
@@ -234,8 +279,8 @@ def p_funcion(p):
                 | declaracion_general funcion_flecha'''
 
 def p_funcion_flecha(p):
-    '''funcion_flecha : PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE items_funcion
-                      | PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE items_funcion'''
+    '''funcion_flecha : PARENTESIS_APERTURA PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE item_funcion
+                      | PARENTESIS_APERTURA parametros PARENTESIS_CLAUSURA SIGNO_IGUAL SIGNO_MAYOR_QUE item_funcion'''
 
 def p_parametros(p):
     '''parametros : declaracion_general
@@ -248,8 +293,13 @@ def p_items_funcion(p):
 def p_item_funcion(p):
     '''item_funcion : instruccion
                     | instruccion_if
-                    | llamadas_func PUNTO_COMA'''
+                    | llamadas_func PUNTO_COMA
+                    | instruccion_while
+                    | instruccion_switch
+                    | inst_return'''
 
+def p_inst_return(p):
+    '''inst_return : RETURN valor_general PUNTO_COMA'''
 
 def p_error(p):
     print('Syntax Error')

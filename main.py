@@ -43,6 +43,7 @@ algoritmoPrueba = '''
                           break;
                         default:
                           print("operacion ilegal");
+                          break;
                       }
                     }
                     //función para calcular el factorial de un numero
@@ -93,6 +94,7 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
            'Future valor;',
            'Stream valor;',
            'Iterable valor;',
+           'String valor;',
            'Never valor;',
            'valor = print(\'bro\',2,xR6, true);',
            '''List lista = [1,'2',3];''',
@@ -118,21 +120,119 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
             } else if(true){
                 var x;
             } else{
-                c = 2+4;
+                if(a>b){
+                    var x;
+                    x = 123;
+                }
             }''',
            '''if(a>b){
                 var x;
-                x = 123;
+                sum(x,y);
+                while(a==b){
+                    var y = 2;
+                }
             }else{
                 y+=12;
             }''',
            '''void suma() { mapA23 = 1; }''',
            '''int suma() { mapA23 = 'asd'; }''',
            '''void suma(int numero1, int numero2) { mapA23 = 1; }''',
-           '''int suma(int numero1, int numero2) { mapA23 = numero1 + numero2; }''',
+           '''int suma(int numero1, int numero2) { 
+                mapA23 = numero1 + numero2; 
+                while(a==b){
+                    var y;
+                    int x = 2*5+3;
+                    prom(x,y);
+                    x++;
+                    --y;
+                }
+            }''',
            '''void cambiar() => cadena = 'asd';''',
-           '''int suma(int numero1, int numero2) => valor = numero1 + numero2;otraFunc();''',
-           '''Set<int> conjunto = {1,4,5,3,5};''']
+           '''int suma(int numero1, int numero2) => valor = numero1 + numero2;''',
+           '''Set<int> conjunto = {1,4,5,3,5};''',
+           '''while(a==b){
+                var y;
+                int x = 2*5+3;
+                prom(x,y);
+                x++;
+                --y;
+                if(a>b){
+                    var x;
+                    x = 123;
+                }
+            }''',
+           '''void realizarCalculo(int x, int y, String operacion){
+                      switch(operacion) {
+                        case "suma":
+                          print(x+y);
+                          break;
+                        case "multiplicacion": {
+                          print(x*y);
+                          var y;
+                        } break;
+                        case "factorial": {
+                          print(fact(x));
+                        } break;
+                        default:{
+                          print("operacion ilegal");
+                          var x;
+                        }break;
+                      }
+                    }''',
+           '''import 'dart:math';''',
+            '''import 'dart:math' as math;''',
+           '''
+               import 'dart:math';
+               main() {
+                 realizarCalculo(-5.2,3,"avsdDF2242 .!@#$%^&*()[]{}\¡¿?;:|/=+-_`~");
+                 realizarCalculo(5,3,"multiplicacion");
+                 realizarCalculo(5,3,"division");
+                 realizarCalculo(5,3,"raiz");
+                 realizarCalculo(5,3,"exponente");
+                 realizarCalculo(5,3,"modulo");
+                 realizarCalculo(5,3,"factorial");
+                 realizarCalculo(5,3,"OperacionIlegal");
+               }
+               /*
+               funcion principal
+               */
+               void realizarCalculo(int x, int y, String operacion){
+                 switch(operacion) {
+                   case "suma":
+                     print(x+y);
+                     break;
+                   case "multiplicacion":
+                     print(x*y);
+                     break;
+                   case "division":
+                     print(x/y);
+                     break;
+                   case "raiz":
+                     print(pow(x, 1/y));
+                     break;
+                   case "exponente":
+                     print(pow(x, y));
+                     break;
+                   case "modulo":
+                     print(x%y);
+                     break;
+                   case "factorial":
+                     print(fact(x));
+                     break;
+                   default:
+                     print("operacion ilegal");
+                    break;
+                 }
+               }
+               //función para calcular el factorial de un numero
+                int fact(int num){
+                   var factorial = 1;
+                
+                  
+                  return factorial;
+                }
+           '''
+           ]
 for prueba in pruebas:
     print(prueba)
     receiveParse(prueba)

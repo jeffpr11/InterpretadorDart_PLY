@@ -76,6 +76,7 @@ reserved = {
     'Stream': 'TIPO_STREAM',
     'Iterable': 'TIPO_ITERABLE',
     'Never': 'TIPO_NEVER',
+    'main': 'MAIN',
 }
 
 # Simbolos y caracteres especiales - Jeffrey Prado

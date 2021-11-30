@@ -137,8 +137,8 @@ def p_declaracion(p):
 
 #Reglas de asignacion - Xavier Carlier
 def p_asignacion(p):
-    '''asignacion : TIPO_INT IDENTIFICADOR SIGNO_IGUAL expresion_mat_int PUNTO_COMA
-                | TIPO_DOUBLE IDENTIFICADOR SIGNO_IGUAL expresion_mat_double PUNTO_COMA
+    '''asignacion : asignacion_int
+                | asignacion_double
                 | TIPO_BOOL IDENTIFICADOR SIGNO_IGUAL expresion_logica PUNTO_COMA
                 | TIPO_STRING IDENTIFICADOR SIGNO_IGUAL DATO_CADENA_TEXTO PUNTO_COMA
                 | VAR IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
@@ -155,6 +155,15 @@ def p_asignacion(p):
                 | TIPO_SET cast_int IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA PUNTO_COMA
                 | TIPO_SET cast_double IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA PUNTO_COMA
                 | TIPO_SET cast_string IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA PUNTO_COMA'''
+
+#Separación de reglas semánticas para int y double - XavierCarlier
+def p_asignacion_int(p):
+    '''asignacion_int : TIPO_INT IDENTIFICADOR SIGNO_IGUAL expresion_mat_int PUNTO_COMA'''
+    print("INFO -> se ha evaluado una regla semántica para la asignación de int\n")
+
+def p_asignacion_double(p):
+    '''asignacion_double : TIPO_DOUBLE IDENTIFICADOR SIGNO_IGUAL expresion_mat_double PUNTO_COMA'''
+    print("INFO -> se ha evaluado una regla semántica para la asignación de double\n")
 
 #Reglas de mapa - XavierCarlier
 def p_bloque_mapa(p):

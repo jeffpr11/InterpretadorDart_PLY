@@ -162,7 +162,8 @@ def p_declaracion(p):
 
 #Reglas de asignacion - Xavier Carlier
 def p_asignacion(p):
-    '''asignacion : asignacion_int
+    '''asignacion : asignacion_bool
+                | asignacion_int
                 | asignacion_double
                 | TIPO_BOOL IDENTIFICADOR SIGNO_IGUAL expresion_logica PUNTO_COMA
                 | TIPO_STRING IDENTIFICADOR SIGNO_IGUAL DATO_CADENA_TEXTO PUNTO_COMA
@@ -180,6 +181,15 @@ def p_asignacion(p):
                 | TIPO_SET cast_int IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_numeros LLAVE_CLAUSURA PUNTO_COMA
                 | TIPO_SET cast_double IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_dobles LLAVE_CLAUSURA PUNTO_COMA
                 | TIPO_SET cast_string IDENTIFICADOR SIGNO_IGUAL LLAVE_APERTURA lista_cadenas LLAVE_CLAUSURA PUNTO_COMA'''
+
+#Separación de reglas semánticas para string y bool - Jeffrey Prado
+def p_asignacion_string(p):
+    '''asignacion_string : TIPO_STRING IDENTIFICADOR SIGNO_IGUAL DATO_CADENA_TEXTO PUNTO_COMA'''
+    print("INFO -> se ha evaluado una regla semántica para la asignación de string\n")
+
+def p_asignacion_bool(p):
+    '''asignacion_bool : TIPO_BOOL IDENTIFICADOR SIGNO_IGUAL expresion_bool PUNTO_COMA'''
+    print("INFO -> se ha evaluado una regla semántica para la asignación de bool\n")
 
 #Separación de reglas semánticas para int y double - XavierCarlier
 def p_asignacion_int(p):
@@ -213,6 +223,17 @@ def p_valor_general(p):
 
 def p_valor_mapa_lista(p):
     '''valor_mapa_lista : IDENTIFICADOR CORCHETE_APERTURA valor_general CORCHETE_CLAUSURA'''
+    
+#Reglas para operaciones lógicas de datos booleanos
+def p_expresion_bool(p):
+    '''expresion_bool : dato_bool
+                    | dato_bool ET ET dato_bool
+                    | dato_bool PLECA PLECA dato_bool
+                    | SIGNO_ADMIRACION_APERTURA dato_bool'''
+
+def p_dato_bool(p):
+    '''dato_bool : TRUE
+                | FALSE'''
 
 #reglas para operaciones matemáticas int y double - XavierCarlier
 def p_expresion_mat_int(p):

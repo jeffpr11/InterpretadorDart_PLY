@@ -2,7 +2,8 @@ import ply.yacc as yacc
 from analisis_lexico import tokens
 
 errores = []
-reglaSemInt = 0
+reglaSemInt = []
+reglaSemDoub = []
 
 #falta por hacer For
 start = 'programa'
@@ -162,10 +163,12 @@ def p_asignacion(p):
 #Separación de reglas semánticas para int y double - XavierCarlier
 def p_asignacion_int(p):
     '''asignacion_int : TIPO_INT IDENTIFICADOR SIGNO_IGUAL expresion_mat_int PUNTO_COMA'''
-    print("INFO -> se ha evaluado una regla semántica para la asignación de int\n")
+    reglaSemInt.append(f'INFO -> se ha evaluado una regla semántica para la asignación de int\n')
+    print(f"INFO -> se ha evaluado una regla semántica para la asignación de int\n")
 
 def p_asignacion_double(p):
     '''asignacion_double : TIPO_DOUBLE IDENTIFICADOR SIGNO_IGUAL expresion_mat_double PUNTO_COMA'''
+    reglaSemDoub.append(f'INFO -> se ha evaluado una regla semántica para la asignación de double\n')
     print("INFO -> se ha evaluado una regla semántica para la asignación de double\n")
 
 #Reglas de mapa - XavierCarlier

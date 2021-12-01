@@ -163,6 +163,12 @@ pruebas = ['int valor=-5-2+4*(1~/3)%b;',
                     x = 123;
                 }
             }''',
+            '''for(int x in numbers){
+              print(x);
+            }''',
+            '''for(int i = 0; i < 10; i++){
+              print(x);
+            }''',
            '''void realizarCalculo(int x, int y, String operacion){
                       switch(operacion) {
                         case "suma":

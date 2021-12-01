@@ -77,6 +77,7 @@ reserved = {
     'Iterable': 'TIPO_ITERABLE',
     'Never': 'TIPO_NEVER',
     'main': 'MAIN',
+    'in': 'IN',
 }
 
 # Simbolos y caracteres especiales - Jeffrey Prado

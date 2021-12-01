@@ -25,6 +25,10 @@ def get_input():
             resmsg = resmsg + analisis_sintactico.reglaSemInt[0] + '\n'
         if len(analisis_sintactico.reglaSemDoub) != 0:
             resmsg = resmsg + analisis_sintactico.reglaSemDoub[0] + '\n'
+        if len(analisis_sintactico.reglaSemStr) != 0:
+            resmsg = resmsg + analisis_sintactico.reglaSemStr[0] + '\n'
+        if len(analisis_sintactico.reglaSemBool) != 0:
+            resmsg = resmsg + analisis_sintactico.reglaSemBool[0] + '\n'
         resultYacc.insert(END, resmsg + "No se han encontrado errores de sintaxis")
     else:
         errmsg = ''

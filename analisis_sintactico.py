@@ -2,6 +2,8 @@ import ply.yacc as yacc
 from analisis_lexico import tokens
 
 errores = []
+reglaSemBool = []
+reglaSemStr = []
 reglaSemInt = []
 reglaSemDoub = []
 
@@ -170,7 +172,7 @@ def p_asignacion(p):
                 | asignacion_int
                 | asignacion_double
                 | TIPO_BOOL IDENTIFICADOR SIGNO_IGUAL expresion_logica PUNTO_COMA
-                | TIPO_STRING IDENTIFICADOR SIGNO_IGUAL DATO_CADENA_TEXTO PUNTO_COMA
+                | asignacion_string
                 | VAR IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
                 | DYNAMIC IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
                 | IDENTIFICADOR SIGNO_IGUAL valor_general PUNTO_COMA
@@ -189,10 +191,12 @@ def p_asignacion(p):
 #Separación de reglas semánticas para string y bool - Jeffrey Prado
 def p_asignacion_string(p):
     '''asignacion_string : TIPO_STRING IDENTIFICADOR SIGNO_IGUAL DATO_CADENA_TEXTO PUNTO_COMA'''
+    reglaSemStr.append(f'INFO -> se ha evaluado una regla semántica para la asignación de string\n')
     print("INFO -> se ha evaluado una regla semántica para la asignación de string\n")
 
 def p_asignacion_bool(p):
     '''asignacion_bool : TIPO_BOOL IDENTIFICADOR SIGNO_IGUAL expresion_bool PUNTO_COMA'''
+    reglaSemBool.append(f'INFO -> se ha evaluado una regla semántica para la asignación de bool\n')
     print("INFO -> se ha evaluado una regla semántica para la asignación de bool\n")
 
 #Separación de reglas semánticas para int y double - XavierCarlier

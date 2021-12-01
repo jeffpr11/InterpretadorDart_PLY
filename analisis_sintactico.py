@@ -19,6 +19,7 @@ def p_item_programa(p):
                     | funcion
                     | instruccion_if
                     | instruccion_while
+                    | instruccion_for
                     | import'''
 
 def p_import(p):
@@ -40,6 +41,29 @@ def p_operacion_unitaria(p):
 #Reglas while - XavierCarlier
 def p_instruccion_while(p):
     '''instruccion_while : WHILE PARENTESIS_APERTURA expresion_logica PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA'''
+
+#Reglas for - Jeffrey Prado
+def p_instruccion_for(p):
+    '''instruccion_for : FOR PARENTESIS_APERTURA condicion_for PARENTESIS_CLAUSURA LLAVE_APERTURA items_estructura_control LLAVE_CLAUSURA'''
+
+def p_condicion_for(p):
+    '''condicion_for : TIPO_INT IDENTIFICADOR IN IDENTIFICADOR
+                    | condicion_for_inicial PUNTO_COMA condicion_for_terminacion PUNTO_COMA condicion_for_paso'''
+
+def p_condicion_for_inicial(p):
+    '''condicion_for_inicial : TIPO_INT IDENTIFICADOR SIGNO_IGUAL IDENTIFICADOR
+                            | TIPO_INT IDENTIFICADOR SIGNO_IGUAL DATO_ENTERO'''
+
+def p_condicion_for_terminacion(p):
+    '''condicion_for_terminacion : IDENTIFICADOR SIGNO_MENOR_QUE DATO_ENTERO
+                                | IDENTIFICADOR SIGNO_MAYOR_QUE DATO_ENTERO
+                                | IDENTIFICADOR SIGNO_MENOR_QUE SIGNO_IGUAL DATO_ENTERO
+                                | IDENTIFICADOR SIGNO_MAYOR_QUE SIGNO_IGUAL DATO_ENTERO
+                                | IDENTIFICADOR SIGNO_IGUAL SIGNO_IGUAL DATO_ENTERO
+                                | IDENTIFICADOR SIGNO_ADMIRACION_APERTURA SIGNO_IGUAL DATO_ENTERO'''
+    
+def p_condicion_for_paso(p):
+    '''condicion_for_paso : operacion_unitaria'''
 
 #Reglas switch-case - XavierCarlier
 def p_instruccion_switch(p):
@@ -81,7 +105,8 @@ def p_item_estructura_control(p):
     '''item_estructura_control : instruccion
                                 | llamadas_func PUNTO_COMA
                                 | instruccion_if
-                                | instruccion_while'''
+                                | instruccion_while
+                                | instruccion_for'''
 
 #Reglas de clases - XavierCarlier
 #todo:constructores
@@ -310,6 +335,7 @@ def p_item_funcion(p):
                     | instruccion_if
                     | llamadas_func PUNTO_COMA
                     | instruccion_while
+                    | instruccion_for
                     | instruccion_switch
                     | inst_return'''
 

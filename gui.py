@@ -3,6 +3,7 @@ from tkinter import ttk
 import tkinter.scrolledtext as tkst
 
 from analisis_lexico import receiveLex
+import analisis_sintactico
 
 resultado = "..."
 
@@ -15,6 +16,14 @@ def get_input():
         tokens = tokens + token.__str__() + '\n'
     print(tokens)
     resultLex.insert(END, tokens)
+    analisis_sintactico.parser.parse(input)
+    if len(analisis_sintactico.errores) == 0:
+        resultYacc.insert(END, "No se han encontrado errores de sintaxis")
+    else:
+        errmsg = ''
+        for error in analisis_sintactico.errores:
+            errmsg = errmsg + error + '\n'
+        resultYacc.insert(END, errmsg)
 # GUI init - Jeffrey Prado
 root = Tk()
 frm = ttk.Frame(root, padding=25)

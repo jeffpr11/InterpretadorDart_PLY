@@ -1,6 +1,9 @@
 import ply.yacc as yacc
 from analisis_lexico import tokens
 
+errores = []
+reglaSemInt = 0
+
 #falta por hacer For
 start = 'programa'
 
@@ -311,7 +314,10 @@ def p_inst_return(p):
     '''inst_return : RETURN valor_general PUNTO_COMA'''
 
 def p_error(p):
-    print('Syntax Error')
+    if p:
+        errMsg = f'Error de sintaxis en el token {p}'
+        print(errMsg)
+        errores.append(errMsg)
 
 parser = yacc.yacc()
 

@@ -66,7 +66,7 @@ pruebaInt = '''int valor=-(3*4);
             '''
 receiveParse(pruebaInt)
 pruebas = ['int valor=-5-2+4*(1~/3)%b;',
-           'int valor=a;',
+           'int valor = a;',
            'double valor = 5-2.898+4*(1.078/abc)%2;',
            'double valor=a;',
            'var valor = otroValor2;',

@@ -7,7 +7,6 @@ reglaSemStr = []
 reglaSemInt = []
 reglaSemDoub = []
 
-#falta por hacer For
 start = 'programa'
 
 def p_programa(p):
@@ -22,6 +21,7 @@ def p_item_programa(p):
                     | instruccion_if
                     | instruccion_while
                     | instruccion_for
+                    | instruccion_switch
                     | import'''
 
 def p_import(p):
